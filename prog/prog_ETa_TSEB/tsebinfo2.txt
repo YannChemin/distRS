@@ -1,0 +1,764 @@
+input file = /cygdrive/C/Data/anfrench/jornada/May18_03parms90m.dat
+output file = /cygdrive/c/Data/anfrench/jornada/May18_03flux90m.dat
+bands  =    3
+pixels =  1050
+lines  =  1000
+tk scale and offset and band index(zero base)   = 0.1    0.0 0
+ndvi scale and offset and band index            = 0.001  0.0 1
+land use code band index                        = 2
+pixel_size(m) = 90.0
+sensor_height(m) = 700000.0
+number_landuse_codes = 10
+landuse_code = canopy_height(m) = landuse_name
+1 = 0.25  = alfalfa
+2 = 1.0   = corn
+3 = 0.5   = grass
+4 = 0.5   = soybean
+5 = 7.5   = trees
+6 = 0.1   = urban
+7 = 0.1   = water
+8 = 0.1   = unknown
+9 = 0.1   = unknown
+10 = 0.1  = roads
+solzenangdeg                                = 32.1186
+Rsolar(W/m^2)                               = 824.0
+surface pressure_mbar                       = 860.0
+surface_air_temperature_(Celsius)           = 30.2
+surface_wind_speed_(m/s)                    = 2.0
+surface_relative_humidity_(fraction_of_1.0) = 0.3
+cG_constant = 0.25
+soil_absorptivity_visible = 0.93
+soil_absorptivity_nir     = 0.77
+soil_emissivity_tir       = 0.95
+leaf_absorptivity_visible = 0.8
+leaf_absorptivity_nir     = 0.60
+leaf_emissivity_tir       = 0.98
+leaf_extinction_tir       = 0.95
+beam_visible_weight_factor = 0.5
+beam_nir_weight_factor     = 0.5
+diffuse_visible_weight_factor  = 0.9
+diffuse_nir_weight_factor       = 0.1
+Choudhury_p_exponent      = 0.6
+Choudhury_beta            = 0.5
+NDVI_minimum              = -0.2
+NDVI_maximum              = 0.6
+NDVI_bare_soil            = 0.2
+fractional_greenness      = 0.5
+leaf_width(m)             = 0.01
+canopy_width(m)           = 0.35
+leafangleparameter        = 1.0
+Kd_blackleaf_diffuserad   = 0.8
+Clumping_factor_nadir     = 0.95
+Priestley_Taylor_alpha    = 1.26
+Zreference_height(m)      = 10.0
+Zreference_height_bare(m) = 0.2
+Zu_wind_speed_measheight  = 10.0
+Zt_temperature_measheight = 9.0
+
+
+
+
+input file = /cygdrive/c/Data/iowa_aster/testfiles/iowa_aster_jul1_2002parmsbip.dat
+output file = /cygdrive/c/Data/iowa_aster/testfiles/testout90m.dat
+bands  =    3
+pixels =  407
+lines  =  206
+tk scale and offset and band index(zero base)   = 0.1    0.0 0
+ndvi scale and offset and band index            = 0.0001 0.0 1
+land use code band index                        = 2
+pixel_size(m) = 15.0
+sensor_height(m) = 5000.0
+number_landuse_codes = 10
+landuse_code = canopy_height(m) = landuse_name
+1 = 0.25  = alfalfa
+2 = 1.0   = corn
+3 = 0.5   = grass
+4 = 0.5   = soybean
+5 = 7.5   = trees
+6 = 0.1   = urban
+7 = 0.1   = water
+8 = 0.1   = unknown
+9 = 0.1   = unknown
+10 = 0.1  = roads
+solzenangdeg                                = 32.1186
+Rsolar(W/m^2)                               = 824.0
+surface pressure_mbar                       = 960.3
+surface_air_temperature_(Celsius)           = 30.2
+surface_wind_speed_(m/s)                    = 2.5
+surface_relative_humidity_(fraction_of_1.0) = 0.595
+cG_constant = 0.25
+soil_absorptivity_visible = 0.93
+soil_absorptivity_nir     = 0.77
+soil_emissivity_tir       = 0.95
+leaf_absorptivity_visible = 0.8
+leaf_absorptivity_nir     = 0.60
+leaf_emissivity_tir       = 0.98
+leaf_extinction_tir       = 0.95
+beam_visible_weight_factor = 0.5
+beam_nir_weight_factor     = 0.5
+diffuse_visible_weight_factor  = 0.9
+diffuse_nir_weight_factor       = 0.1
+Choudhury_p_exponent      = 0.6
+Choudhury_beta            = 0.5
+NDVI_minimum              = 0.15
+NDVI_maximum              = 0.8
+NDVI_bare_soil            = 0.28
+fractional_greenness      = 0.9
+leaf_width(m)             = 0.01
+canopy_width(m)           = 0.35
+leafangleparameter        = 1.0
+Kd_blackleaf_diffuserad   = 0.8
+Clumping_factor_nadir     = 0.95
+Priestley_Taylor_alpha    = 1.26
+Zreference_height(m)      = 10.0
+Zreference_height_bare(m) = 0.2
+Zu_wind_speed_measheight  = 10.0
+Zt_temperature_measheight = 9.0
+
+
+
+
+/home/anfrench/aster_ctrlok/Apr1_02_359220_90m_parms.dat
+/home/anfrench/aster_ctrlok/Apr1_02_359220_90m_flux.dat
+bands  =    2
+pixels =  830
+lines  =  700
+pixel_size(m) = 90.0
+sensor_height(m) = 700000.0
+number_landuse_codes = 14
+landuse_code = canopy_height(m) = landuse_name
+1 = 0.25 = alfalfa
+2 = 0.1 = bare
+3 = 0.5 = corn
+4 = 0.5 = forage
+5 = 0.25 = legume
+6 = 0.5 = pature
+7 = 7.5 = trees
+8 = 0.1 = urban
+9 = 0.1 = water
+10 = 0.1 = wheat
+11 = 0.5 = summer_corn 
+12 = 0.25 = summer_legume
+13 = 0.5 = shrubs
+14 = 0.1 = unknown
+solzenangdeg                                = 19.115
+Rsolar(W/m^2)                               = 729.67
+surface pressure_mbar                       = 960.3
+surface_air_temperature_(Celsius)           = 20.1
+surface_wind_speed_(m/s)                    = 12.1
+surface_relative_humidity_(fraction_of_1.0) = 0.57
+cG_constant = 0.04
+soil_absorptivity_visible = 0.85
+soil_absorptivity_nir     = 0.75
+soil_emissivity_tir       = 0.95
+leaf_absorptivity_visible = 0.85
+leaf_absorptivity_nir     = 0.20
+leaf_emissivity_tir       = 0.95
+beam_visible_weight_factor = 0.8
+beam_nir_weight_factor     = 0.2
+diffuse_visible_weight_factor  = 0.9
+diffuse_nir_eight_factor       = 0.1
+Choudhury_p_exponent      = 0.6
+Choudhury_beta            = 0.5
+NDVI_minimum              = 0.0
+NDVI_maximum              = 0.6
+NDVI_bare_soil            = 0.1
+fractional_greenness      = 0.7
+leaf_width(m)             = 0.01
+canopy_width(m)           = 0.35
+leafangleparameter        = 1.0
+Kd_blackleaf_diffuserad   = 0.8
+Clumping_factor_nadir     = 0.95
+Priestley_Taylor_alpha    = 1.26
+Zreference_height(m)      = 3.0
+Zreference_height_bare(m) = 0.2
+Zu_wind_speed_measheight  = 3.0
+Zt_temperature_measheight = 3.0
+
+
+/home/anfrench/aster_ctrlok/Apr1_02_332736_90m_parms.dat
+/home/anfrench/aster_ctrlok/Apr1_02_332736_90mrev_flux.dat
+bands  =    2
+pixels =  830
+lines  =  700
+pixel_size(m) = 90.0
+sensor_height(m) = 700000.0
+number_landuse_codes = 14
+landuse_code = canopy_height(m) = landuse_name
+1 = 0.25 = alfalfa
+2 = 0.1 = bare
+3 = 0.5 = corn
+4 = 0.5 = forage
+5 = 0.25 = legume
+6 = 0.5 = pature
+7 = 7.5 = trees
+8 = 0.1 = urban
+9 = 0.1 = water
+10 = 0.1 = wheat
+11 = 0.5 = summer_corn 
+12 = 0.25 = summer_legume
+13 = 0.5 = shrubs
+14 = 0.1 = unknown
+solzenangdeg                                = 32.1
+Rsolar(W/m^2)                               = 604.0
+surface pressure_mbar                       = 965.0
+surface_air_temperature_(Celsius)           = 15.0
+surface_wind_speed_(m/s)                    = 2.3
+surface_relative_humidity_(fraction_of_1.0) = 0.5
+cG_constant = 0.25
+soil_absorptivity_visible = 0.85
+soil_absorptivity_nir     = 0.75
+soil_emissivity_tir       = 0.95
+leaf_absorptivity_visible = 0.85
+leaf_absorptivity_nir     = 0.20
+leaf_emissivity_tir       = 0.95
+beam_visible_weight_factor = 0.8
+beam_nir_weight_factor     = 0.2
+diffuse_visible_weight_factor  = 0.9
+diffuse_nir_eight_factor       = 0.1
+Choudhury_p_exponent      = 0.6
+Choudhury_beta            = 0.5
+NDVI_minimum              = 0.0
+NDVI_maximum              = 0.6
+NDVI_bare_soil            = 0.1
+fractional_greenness      = 0.7
+leaf_width(m)             = 0.01
+canopy_width(m)           = 0.35
+leafangleparameter        = 1.0
+Kd_blackleaf_diffuserad   = 0.8
+Clumping_factor_nadir     = 0.95
+Priestley_Taylor_alpha    = 1.26
+Zreference_height(m)      = 3.0
+Zreference_height_bare(m) = 0.2
+Zu_wind_speed_measheight  = 3.0
+Zt_temperature_measheight = 3.0
+
+
+/home/anfrench/aster_ctrlok/Jun29_02_371601_90m_parms.dat
+/home/anfrench/aster_ctrlok/Jun29_02_371601_90m_flux.dat
+bands  =    2
+pixels =  830
+lines  =  700
+pixel_size(m) = 90.0
+sensor_height(m) = 700000.0
+number_landuse_codes = 14
+landuse_code = canopy_height(m) = landuse_name
+1 = 0.25 = alfalfa
+2 = 0.1 = bare
+3 = 0.5 = corn
+4 = 0.5 = forage
+5 = 0.25 = legume
+6 = 0.5 = pature
+7 = 7.5 = trees
+8 = 0.1 = urban
+9 = 0.1 = water
+10 = 0.1 = wheat
+11 = 0.5 = summer_corn 
+12 = 0.25 = summer_legume
+13 = 0.5 = shrubs
+14 = 0.1 = unknown
+solzenangdeg                                = 19.115
+Rsolar(W/m^2)                               = 650.0
+surface pressure_mbar                       = 981.1
+surface_air_temperature_(Celsius)           = 31.4
+surface_wind_speed_(m/s)                    = 4.9
+surface_relative_humidity_(fraction_of_1.0) = 0.56
+cG_constant = 0.25
+soil_absorptivity_visible = 0.85
+soil_absorptivity_nir     = 0.75
+soil_emissivity_tir       = 0.95
+leaf_absorptivity_visible = 0.85
+leaf_absorptivity_nir     = 0.20
+leaf_emissivity_tir       = 0.95
+beam_visible_weight_factor = 0.8
+beam_nir_weight_factor     = 0.2
+diffuse_visible_weight_factor  = 0.9
+diffuse_nir_eight_factor       = 0.1
+Choudhury_p_exponent      = 0.6
+Choudhury_beta            = 0.5
+NDVI_minimum              = 0.0
+NDVI_maximum              = 0.6
+NDVI_bare_soil            = 0.1
+fractional_greenness      = 0.9
+leaf_width(m)             = 0.01
+canopy_width(m)           = 0.35
+leafangleparameter        = 1.0
+Kd_blackleaf_diffuserad   = 0.8
+Clumping_factor_nadir     = 0.95
+Priestley_Taylor_alpha    = 1.26
+Zreference_height(m)      = 3.0
+Zreference_height_bare(m) = 0.2
+Zu_wind_speed_measheight  = 3.0
+Zt_temperature_measheight = 3.0
+
+/home/anfrench/aster_ctrlok/Apr1_02_332736_900m_parms.dat
+/home/anfrench/aster_ctrlok/Apr1_02_332736_900m_flux.dat
+bands  =    2
+pixels =  83
+lines  =  70
+pixel_size(m) = 900.0
+sensor_height(m) = 700000.0
+number_landuse_codes = 14
+landuse_code = canopy_height(m) = landuse_name
+1 = 0.25 = alfalfa
+2 = 0.1 = bare
+3 = 0.5 = corn
+4 = 0.5 = forage
+5 = 0.25 = legume
+6 = 0.5 = pature
+7 = 7.5 = trees
+8 = 0.1 = urban
+9 = 0.1 = water
+10 = 0.1 = wheat
+11 = 0.5 = summer_corn 
+12 = 0.25 = summer_legume
+13 = 0.5 = shrubs
+14 = 0.1 = unknown
+solzenangdeg                                = 32.1
+Rsolar(W/m^2)                               = 814.9
+surface pressure_mbar                       = 965.0
+surface_air_temperature_(Celsius)           = 15.0
+surface_wind_speed_(m/s)                    = 2.3
+surface_relative_humidity_(fraction_of_1.0) = 0.5
+cG_constant = 0.25
+soil_absorptivity_visible = 0.85
+soil_absorptivity_nir     = 0.75
+soil_emissivity_tir       = 0.95
+leaf_absorptivity_visible = 0.85
+leaf_absorptivity_nir     = 0.20
+leaf_emissivity_tir       = 0.95
+beam_visible_weight_factor = 0.8
+beam_nir_weight_factor     = 0.2
+diffuse_visible_weight_factor  = 0.9
+diffuse_nir_eight_factor       = 0.1
+Choudhury_p_exponent      = 0.6
+Choudhury_beta            = 0.5
+NDVI_minimum              = 0.0
+NDVI_maximum              = 0.6
+NDVI_bare_soil            = 0.1
+fractional_greenness      = 0.7
+leaf_width(m)             = 0.01
+canopy_width(m)           = 0.35
+leafangleparameter        = 1.0
+Kd_blackleaf_diffuserad   = 0.8
+Clumping_factor_nadir     = 0.95
+Priestley_Taylor_alpha    = 1.26
+Zreference_height(m)      = 3.0
+Zreference_height_bare(m) = 0.2
+Zu_wind_speed_measheight  = 3.0
+Zt_temperature_measheight = 3.0
+
+
+
+/home/anfrench/aster_ctrlok/Apr1_02_332736_810m_parms.dat
+/home/anfrench/aster_ctrlok/Apr1_02_332736_810m_flux.dat
+bands  =    2
+pixels =  92
+lines  =  77
+pixel_size(m) = 810.0
+sensor_height(m) = 700000.0
+number_landuse_codes = 14
+landuse_code = canopy_height(m) = landuse_name
+1 = 0.25 = alfalfa
+2 = 0.1 = bare
+3 = 0.5 = corn
+4 = 0.5 = forage
+5 = 0.25 = legume
+6 = 0.5 = pature
+7 = 7.5 = trees
+8 = 0.1 = urban
+9 = 0.1 = water
+10 = 0.1 = wheat
+11 = 0.5 = summer_corn 
+12 = 0.25 = summer_legume
+13 = 0.5 = shrubs
+14 = 0.1 = unknown
+solzenangdeg                                = 32.1
+Rsolar(W/m^2)                               = 814.9
+surface pressure_mbar                       = 965.0
+surface_air_temperature_(Celsius)           = 15.0
+surface_wind_speed_(m/s)                    = 2.3
+surface_relative_humidity_(fraction_of_1.0) = 0.5
+cG_constant = 0.25
+soil_absorptivity_visible = 0.85
+soil_absorptivity_nir     = 0.75
+soil_emissivity_tir       = 0.95
+leaf_absorptivity_visible = 0.85
+leaf_absorptivity_nir     = 0.20
+leaf_emissivity_tir       = 0.95
+beam_visible_weight_factor = 0.8
+beam_nir_weight_factor     = 0.2
+diffuse_visible_weight_factor  = 0.9
+diffuse_nir_eight_factor       = 0.1
+Choudhury_p_exponent      = 0.6
+Choudhury_beta            = 0.5
+NDVI_minimum              = 0.0
+NDVI_maximum              = 0.6
+NDVI_bare_soil            = 0.1
+fractional_greenness      = 0.7
+leaf_width(m)             = 0.01
+canopy_width(m)           = 0.35
+leafangleparameter        = 1.0
+Kd_blackleaf_diffuserad   = 0.8
+Clumping_factor_nadir     = 0.95
+Priestley_Taylor_alpha    = 1.26
+Zreference_height(m)      = 3.0
+Zreference_height_bare(m) = 0.2
+Zu_wind_speed_measheight  = 3.0
+Zt_temperature_measheight = 3.0
+
+
+
+/home/anfrench/aster_ctrlok/Apr1_02_332736_450m_parms.dat
+/home/anfrench/aster_ctrlok/Apr1_02_332736_450m_flux.dat
+bands  =    2
+pixels =  166
+lines  =  140
+pixel_size(m) = 450.0
+sensor_height(m) = 700000.0
+number_landuse_codes = 14
+landuse_code = canopy_height(m) = landuse_name
+1 = 0.25 = alfalfa
+2 = 0.1 = bare
+3 = 0.5 = corn
+4 = 0.5 = forage
+5 = 0.25 = legume
+6 = 0.5 = pature
+7 = 7.5 = trees
+8 = 0.1 = urban
+9 = 0.1 = water
+10 = 0.1 = wheat
+11 = 0.5 = summer_corn 
+12 = 0.25 = summer_legume
+13 = 0.5 = shrubs
+14 = 0.1 = unknown
+solzenangdeg                                = 32.1
+Rsolar(W/m^2)                               = 814.9
+surface pressure_mbar                       = 965.0
+surface_air_temperature_(Celsius)           = 15.0
+surface_wind_speed_(m/s)                    = 2.3
+surface_relative_humidity_(fraction_of_1.0) = 0.5
+cG_constant = 0.25
+soil_absorptivity_visible = 0.85
+soil_absorptivity_nir     = 0.75
+soil_emissivity_tir       = 0.95
+leaf_absorptivity_visible = 0.85
+leaf_absorptivity_nir     = 0.20
+leaf_emissivity_tir       = 0.95
+beam_visible_weight_factor = 0.8
+beam_nir_weight_factor     = 0.2
+diffuse_visible_weight_factor  = 0.9
+diffuse_nir_eight_factor       = 0.1
+Choudhury_p_exponent      = 0.6
+Choudhury_beta            = 0.5
+NDVI_minimum              = 0.0
+NDVI_maximum              = 0.6
+NDVI_bare_soil            = 0.1
+fractional_greenness      = 0.7
+leaf_width(m)             = 0.01
+canopy_width(m)           = 0.35
+leafangleparameter        = 1.0
+Kd_blackleaf_diffuserad   = 0.8
+Clumping_factor_nadir     = 0.95
+Priestley_Taylor_alpha    = 1.26
+Zreference_height(m)      = 3.0
+Zreference_height_bare(m) = 0.2
+Zu_wind_speed_measheight  = 3.0
+Zt_temperature_measheight = 3.0
+
+
+
+/home/anfrench/aster_ctrlok/Apr1_02_332736_360m_parms.dat
+/home/anfrench/aster_ctrlok/Apr1_02_332736_360m_flux.dat
+bands  =    2
+pixels =  207
+lines  =  175
+pixel_size(m) = 360.0
+sensor_height(m) = 700000.0
+number_landuse_codes = 14
+landuse_code = canopy_height(m) = landuse_name
+1 = 0.25 = alfalfa
+2 = 0.1 = bare
+3 = 0.5 = corn
+4 = 0.5 = forage
+5 = 0.25 = legume
+6 = 0.5 = pature
+7 = 7.5 = trees
+8 = 0.1 = urban
+9 = 0.1 = water
+10 = 0.1 = wheat
+11 = 0.5 = summer_corn 
+12 = 0.25 = summer_legume
+13 = 0.5 = shrubs
+14 = 0.1 = unknown
+solzenangdeg                                = 32.1
+Rsolar(W/m^2)                               = 814.9
+surface pressure_mbar                       = 965.0
+surface_air_temperature_(Celsius)           = 15.0
+surface_wind_speed_(m/s)                    = 2.3
+surface_relative_humidity_(fraction_of_1.0) = 0.5
+cG_constant = 0.25
+soil_absorptivity_visible = 0.85
+soil_absorptivity_nir     = 0.75
+soil_emissivity_tir       = 0.95
+leaf_absorptivity_visible = 0.85
+leaf_absorptivity_nir     = 0.20
+leaf_emissivity_tir       = 0.95
+beam_visible_weight_factor = 0.8
+beam_nir_weight_factor     = 0.2
+diffuse_visible_weight_factor  = 0.9
+diffuse_nir_eight_factor       = 0.1
+Choudhury_p_exponent      = 0.6
+Choudhury_beta            = 0.5
+NDVI_minimum              = 0.0
+NDVI_maximum              = 0.6
+NDVI_bare_soil            = 0.1
+fractional_greenness      = 0.7
+leaf_width(m)             = 0.01
+canopy_width(m)           = 0.35
+leafangleparameter        = 1.0
+Kd_blackleaf_diffuserad   = 0.8
+Clumping_factor_nadir     = 0.95
+Priestley_Taylor_alpha    = 1.26
+Zreference_height(m)      = 3.0
+Zreference_height_bare(m) = 0.2
+Zu_wind_speed_measheight  = 3.0
+Zt_temperature_measheight = 3.0
+
+
+
+/home/anfrench/aster_ctrlok/Apr1_02_332736_270m_parms.dat
+/home/anfrench/aster_ctrlok/Apr1_02_332736_270m_flux.dat
+bands  =    2
+pixels =  276
+lines  =  233
+pixel_size(m) = 270.0
+sensor_height(m) = 700000.0
+number_landuse_codes = 14
+landuse_code = canopy_height(m) = landuse_name
+1 = 0.25 = alfalfa
+2 = 0.1 = bare
+3 = 0.5 = corn
+4 = 0.5 = forage
+5 = 0.25 = legume
+6 = 0.5 = pature
+7 = 7.5 = trees
+8 = 0.1 = urban
+9 = 0.1 = water
+10 = 0.1 = wheat
+11 = 0.5 = summer_corn 
+12 = 0.25 = summer_legume
+13 = 0.5 = shrubs
+14 = 0.1 = unknown
+solzenangdeg                                = 32.1
+Rsolar(W/m^2)                               = 814.9
+surface pressure_mbar                       = 965.0
+surface_air_temperature_(Celsius)           = 15.0
+surface_wind_speed_(m/s)                    = 2.3
+surface_relative_humidity_(fraction_of_1.0) = 0.5
+cG_constant = 0.25
+soil_absorptivity_visible = 0.85
+soil_absorptivity_nir     = 0.75
+soil_emissivity_tir       = 0.95
+leaf_absorptivity_visible = 0.85
+leaf_absorptivity_nir     = 0.20
+leaf_emissivity_tir       = 0.95
+beam_visible_weight_factor = 0.8
+beam_nir_weight_factor     = 0.2
+diffuse_visible_weight_factor  = 0.9
+diffuse_nir_eight_factor       = 0.1
+Choudhury_p_exponent      = 0.6
+Choudhury_beta            = 0.5
+NDVI_minimum              = 0.0
+NDVI_maximum              = 0.6
+NDVI_bare_soil            = 0.1
+fractional_greenness      = 0.7
+leaf_width(m)             = 0.01
+canopy_width(m)           = 0.35
+leafangleparameter        = 1.0
+Kd_blackleaf_diffuserad   = 0.8
+Clumping_factor_nadir     = 0.95
+Priestley_Taylor_alpha    = 1.26
+Zreference_height(m)      = 3.0
+Zreference_height_bare(m) = 0.2
+Zu_wind_speed_measheight  = 3.0
+Zt_temperature_measheight = 3.0
+
+
+
+/home/anfrench/aster_ctrlok/Apr1_02_332736_180m_parms.dat
+/home/anfrench/aster_ctrlok/Apr1_02_332736_180m_flux.dat
+bands  =    2
+pixels =  415 
+lines  =  350
+pixel_size(m) = 180.0
+sensor_height(m) = 700000.0
+number_landuse_codes = 14
+landuse_code = canopy_height(m) = landuse_name
+1 = 0.25 = alfalfa
+2 = 0.1 = bare
+3 = 0.5 = corn
+4 = 0.5 = forage
+5 = 0.25 = legume
+6 = 0.5 = pature
+7 = 7.5 = trees
+8 = 0.1 = urban
+9 = 0.1 = water
+10 = 0.1 = wheat
+11 = 0.5 = summer_corn 
+12 = 0.25 = summer_legume
+13 = 0.5 = shrubs
+14 = 0.1 = unknown
+solzenangdeg                                = 32.1
+Rsolar(W/m^2)                               = 814.9
+surface pressure_mbar                       = 965.0
+surface_air_temperature_(Celsius)           = 15.0
+surface_wind_speed_(m/s)                    = 2.3
+surface_relative_humidity_(fraction_of_1.0) = 0.5
+cG_constant = 0.25
+soil_absorptivity_visible = 0.85
+soil_absorptivity_nir     = 0.75
+soil_emissivity_tir       = 0.95
+leaf_absorptivity_visible = 0.85
+leaf_absorptivity_nir     = 0.20
+leaf_emissivity_tir       = 0.95
+beam_visible_weight_factor = 0.8
+beam_nir_weight_factor     = 0.2
+diffuse_visible_weight_factor  = 0.9
+diffuse_nir_eight_factor       = 0.1
+Choudhury_p_exponent      = 0.6
+Choudhury_beta            = 0.5
+NDVI_minimum              = 0.0
+NDVI_maximum              = 0.6
+NDVI_bare_soil            = 0.1
+fractional_greenness      = 0.7
+leaf_width(m)             = 0.01
+canopy_width(m)           = 0.35
+leafangleparameter        = 1.0
+Kd_blackleaf_diffuserad   = 0.8
+Clumping_factor_nadir     = 0.95
+Priestley_Taylor_alpha    = 1.26
+Zreference_height(m)      = 3.0
+Zreference_height_bare(m) = 0.2
+Zu_wind_speed_measheight  = 3.0
+Zt_temperature_measheight = 3.0
+
+
+
+/home/anfrench/aster_ctrlok/Apr1_02_332736_900m_parms.dat
+/home/anfrench/aster_ctrlok/Apr1_02_332736_900m_flux.dat
+bands  =    2
+pixels =  83 
+lines  =  70
+pixel_size(m) = 900.0
+sensor_height(m) = 700000.0
+number_landuse_codes = 14
+landuse_code = canopy_height(m) = landuse_name
+1 = 0.25 = alfalfa
+2 = 0.1 = bare
+3 = 0.5 = corn
+4 = 0.5 = forage
+5 = 0.25 = legume
+6 = 0.5 = pature
+7 = 7.5 = trees
+8 = 0.1 = urban
+9 = 0.1 = water
+10 = 0.1 = wheat
+11 = 0.5 = summer_corn 
+12 = 0.25 = summer_legume
+13 = 0.5 = shrubs
+14 = 0.1 = unknown
+solzenangdeg                                = 32.1
+Rsolar(W/m^2)                               = 814.9
+surface pressure_mbar                       = 965.0
+surface_air_temperature_(Celsius)           = 15.0
+surface_wind_speed_(m/s)                    = 2.3
+surface_relative_humidity_(fraction_of_1.0) = 0.5
+cG_constant = 0.25
+soil_absorptivity_visible = 0.85
+soil_absorptivity_nir     = 0.75
+soil_emissivity_tir       = 0.95
+leaf_absorptivity_visible = 0.85
+leaf_absorptivity_nir     = 0.20
+leaf_emissivity_tir       = 0.95
+beam_visible_weight_factor = 0.8
+beam_nir_weight_factor     = 0.2
+diffuse_visible_weight_factor  = 0.9
+diffuse_nir_eight_factor       = 0.1
+Choudhury_p_exponent      = 0.6
+Choudhury_beta            = 0.5
+NDVI_minimum              = 0.0
+NDVI_maximum              = 0.6
+NDVI_bare_soil            = 0.1
+fractional_greenness      = 0.7
+leaf_width(m)             = 0.01
+canopy_width(m)           = 0.35
+leafangleparameter        = 1.0
+Kd_blackleaf_diffuserad   = 0.8
+Clumping_factor_nadir     = 0.95
+Priestley_Taylor_alpha    = 1.26
+Zreference_height(m)      = 3.0
+Zreference_height_bare(m) = 0.2
+Zu_wind_speed_measheight  = 3.0
+Zt_temperature_measheight = 3.0
+
+
+
+
+/home/anfrench/aster_ctrlok/Apr1_02_332736parms.dat
+/home/anfrench/aster_ctrlok/Apr1_02_332736flux.dat
+bands  =    2
+pixels =  830 
+lines  =  700
+pixel_size(m) = 90.0
+sensor_height(m) = 700000.0
+number_landuse_codes = 14
+landuse_code = canopy_height(m) = landuse_name
+1 = 0.25 = alfalfa
+2 = 0.1 = bare
+3 = 0.5 = corn
+4 = 0.5 = forage
+5 = 0.25 = legume
+6 = 0.5 = pature
+7 = 7.5 = trees
+8 = 0.1 = urban
+9 = 0.1 = water
+10 = 0.1 = wheat
+11 = 0.5 = summer_corn 
+12 = 0.25 = summer_legume
+13 = 0.5 = shrubs
+14 = 0.1 = unknown
+solzenangdeg                                = 32.1
+Rsolar(W/m^2)                               = 814.9
+surface pressure_mbar                       = 965.0
+surface_air_temperature_(Celsius)           = 15.0
+surface_wind_speed_(m/s)                    = 2.3
+surface_relative_humidity_(fraction_of_1.0) = 0.5
+cG_constant = 0.25
+soil_absorptivity_visible = 0.85
+soil_absorptivity_nir     = 0.75
+soil_emissivity_tir       = 0.95
+leaf_absorptivity_visible = 0.85
+leaf_absorptivity_nir     = 0.20
+leaf_emissivity_tir       = 0.95
+beam_visible_weight_factor = 0.8
+beam_nir_weight_factor     = 0.2
+diffuse_visible_weight_factor  = 0.9
+diffuse_nir_eight_factor       = 0.1
+Choudhury_p_exponent      = 0.6
+Choudhury_beta            = 0.5
+NDVI_minimum              = 0.0
+NDVI_maximum              = 0.6
+NDVI_bare_soil            = 0.1
+fractional_greenness      = 0.7
+leaf_width(m)             = 0.01
+canopy_width(m)           = 0.35
+leafangleparameter        = 1.0
+Kd_blackleaf_diffuserad   = 0.8
+Clumping_factor_nadir     = 0.95
+Priestley_Taylor_alpha    = 1.26
+Zreference_height(m)      = 3.0
+Zreference_height_bare(m) = 0.2
+Zu_wind_speed_measheight  = 3.0
+Zt_temperature_measheight = 3.0
+    

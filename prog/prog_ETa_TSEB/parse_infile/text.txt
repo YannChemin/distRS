@@ -1,0 +1,52 @@
+input file = /cygdrive/C/Data/anfrench/jornada/May18_03parms90m.dat
+output file = /cygdrive/c/Data/anfrench/jornada/May18_03flux90m.dat
+bands  =    3
+pixels =  1050
+lines  =  1000
+tk scale and offset              = 0.1    0.0 
+ndvi scale and offset            = 0.001  0.0
+number_landuse_codes = 10
+landuse_code = canopy_height(m) = landuse_name
+1 = 0.25  = alfalfa
+2 = 1.0   = corn
+3 = 0.5   = grass
+4 = 0.5   = soybean
+5 = 7.5   = trees
+6 = 0.1   = urban
+7 = 0.1   = water
+8 = 0.1   = unknown
+9 = 0.1   = unknown
+10 = 0.1  = roads
+solzenangdeg                                = 32.1186
+Rsolar(W/m^2)                               = 824.0
+surface pressure_mbar                       = 860.0
+surface_air_temperature_(Celsius)           = 30.2
+surface_wind_speed_(m/s)                    = 2.0
+surface_relative_humidity_(fraction_of_1.0) = 0.3
+cG_constant = 0.25
+soil_absorptivity_visible = 0.93
+soil_absorptivity_nir     = 0.77
+soil_emissivity_tir       = 0.95
+leaf_absorptivity_visible = 0.8
+leaf_absorptivity_nir     = 0.60
+leaf_emissivity_tir       = 0.98
+leaf_extinction_tir       = 0.95
+beam_visible_weight_factor = 0.5
+beam_nir_weight_factor     = 0.5
+diffuse_visible_weight_factor  = 0.9
+diffuse_nir_weight_factor       = 0.1
+Choudhury_p_exponent      = 0.6
+Choudhury_beta            = 0.5
+NDVI_minimum              = -0.2
+NDVI_maximum              = 0.6
+NDVI_bare_soil            = 0.2
+fractional_greenness      = 0.5
+leaf_width(m)             = 0.01
+canopy_width(m)           = 0.35
+leafangleparameter        = 1.0
+Clumping_factor_nadir     = 0.95
+Priestley_Taylor_alpha    = 1.26
+Zreference_height(m)      = 10.0
+Zreference_height_bare(m) = 0.2
+Zu_wind_speed_measheight  = 10.0
+Zt_temperature_measheight = 9.0

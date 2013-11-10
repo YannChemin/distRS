@@ -1,0 +1,37 @@
+
+R version 2.13.1 (2011-07-08)
+Copyright (C) 2011 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> setwd('/home/yann/Coding/prog/prog_HIST/')
+> rice<-read.table("hist.csv")
+> plot(rice, type="h", col="dark red", log = "y", yaxt = "n",xlab="Surface water occurrence (%)", ylab="Rice area hit by surface water (ha)")
+Warning message:
+In xy.coords(x, y, xlabel, ylabel, log) :
+  33 y values <= 0 omitted from logarithmic plot
+> axis(2, c(1,10,100,1000,10000,100000)) # draw y axis with required labels
+> 
+> # rice_1_20<-read.table("NETH_histogram_rice_1_20")
+> # plot(rice_1_20, type="h", col="dark red", log = "y", yaxt = "n")
+> # axis(2, c(1,10,100,1000,10000,100000)) # draw y axis with required labels
+> 
+> proc.time()
+   user  system elapsed 
+  0.200   0.016   0.213 
