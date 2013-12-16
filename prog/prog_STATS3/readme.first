@@ -1,0 +1,3 @@
+This is extracting stats using a mask raster (like Land use) having integer values for classes. As long as the raster was clipped with "2_clip.sh" along with the data to be clipped, it should extract well, irrespective of pixel sizes.
+
+both 2_clip.sh and 3_stats.sh should be copied in the parent directory.
