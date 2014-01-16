@@ -36,7 +36,7 @@ PrintOpenCLInfo()
 #Max compute units: 14
 #Max work group size: 256
 #Max work item sizes: [256, 256, 256]
-#Name: Intel(R) Core(TM) i3 CPU         540  @ 3.07GHz
+#Name: Intel(R) Core(TM) i3 CPU 540 @ 3.07GHz
 #OpenCL version: OpenCL 1.1 AMD-APP-SDK-v2.5 (684.213)
 #Global memory size: 11968.00 Megabytes
 #Local memory size: 32.00 Kilobytes
@@ -45,4 +45,3 @@ PrintOpenCLInfo()
 #Max compute units: 4
 #Max work group size: 1024
 #Max work item sizes: [1024, 1024, 1024]
-
