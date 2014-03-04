@@ -56,7 +56,7 @@ int main( int argc, char *argv[] )
 		hDriver[i] = GDALGetDatasetDriver(hDataset[i]);
 		hBand[i] = GDALGetRasterBand(hDataset[i],1);
 		nXSize1 = GDALGetRasterBandXSize(hBand[0]);
-		pafScanline[i] = (float *) CPLMalloc(sizeof(float)*nXSize1);
+		pafScanline[i] = (float *) malloc(sizeof(float)*nXSize1);
 	}
 	printf("Passed 1\n");
 	nYSize1 = GDALGetRasterBandYSize(hBand[0]);
@@ -66,7 +66,7 @@ int main( int argc, char *argv[] )
 				hDataset[0],FALSE,NULL,NULL,NULL);
 // 	hDataset[n_imgs] = GDALCreate(hDriver[0],out,nXSize1,nYSize1,1,GDT_Float32,NULL);
 	hBand[n_imgs] = GDALGetRasterBand(hDataset[n_imgs],1);
-	pafScanline[n_imgs] = (float *) CPLMalloc(sizeof(float)*nXSize1);
+	pafScanline[n_imgs] = (float *) malloc(sizeof(float)*nXSize1);
 	
 	printf("Passed 2\n");
 	//Accessing the data rowxrow
