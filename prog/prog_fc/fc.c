@@ -23,7 +23,7 @@ int main( int argc, char *argv[] )
 	//Loading the input files names
 	//-----------------------------
 	char	*inB2	 	= argv[1]; //Emis31
-	char	*fcF	 	= argv[3];	
+	char	*fcF	 	= argv[2];	
 	//Loading the input files
 	//-----------------------
 	GDALAllRegister();
@@ -50,7 +50,7 @@ int main( int argc, char *argv[] )
 	#pragma omp parallel for default(none) \
 	private (rowcol, tempval) shared (N, minval, maxval, l2)
 	for(rowcol=0;rowcol<N;rowcol++){
-		if( l2[rowcol] == 0) {} 
+		if( l2[rowcol] == -28768) {} 
 		else
 		{ 
 			tempval = 0.0001 * l2[rowcol];
@@ -63,7 +63,7 @@ int main( int argc, char *argv[] )
 	#pragma omp parallel for default(none) \
 	private (rowcol, tempval) shared (N, minval, maxval, l2, lOut)
 	for(rowcol=0;rowcol<N;rowcol++){
-		if( l2[rowcol] == 0){
+		if( l2[rowcol] == -28768){
 			lOut[rowcol] = 0;
 		} 
 		else
