@@ -55,7 +55,8 @@ int main( int argc, char *argv[] )
 	#pragma omp parallel for default(none) \
 	private (rowcol) shared (N, l2, l3, lOut)
 	for(rowcol=0;rowcol<N;rowcol++){
-		lOut[rowcol] = l2[rowcol] * l3[rowcol];
+		//FC is in percentage
+		lOut[rowcol] = l2[rowcol] * l3[rowcol] / 100.0;
 	}
 	#pragma omp barrier
 	GDALRasterIO(hBOut,GF_Write,0,0,nX,nY,lOut,nX,nY,GDT_Float32,0,0);
