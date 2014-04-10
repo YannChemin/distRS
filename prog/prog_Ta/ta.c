@@ -47,11 +47,11 @@ int main( int argc, char *argv[] )
 	int nY = GDALGetRasterBandYSize(hB2);
 	int N = nX*nY;
 	float *l2 = (float *) malloc(sizeof(float)*N);
-	float *l3 = (float *) malloc(sizeof(float)*N);
+	short int *l3 = (short int *) malloc(sizeof(short int)*N);
 	float *lOut = (float *) malloc(sizeof(float)*N);
 	int rowcol;
 	GDALRasterIO(hB2,GF_Read,0,0,nX,nY,l2,nX,nY,GDT_Float32,0,0);
-	GDALRasterIO(hB3,GF_Read,0,0,nX,nY,l3,nX,nY,GDT_Int32,0,0);
+	GDALRasterIO(hB3,GF_Read,0,0,nX,nY,l3,nX,nY,GDT_Int16,0,0);
 	#pragma omp parallel for default(none) \
 	private (rowcol) shared (N, l2, l3, lOut)
 	for(rowcol=0;rowcol<N;rowcol++){
