@@ -22,7 +22,7 @@ int main( int argc, char *argv[] )
 	}
 	//Loading the input files names
 	//-----------------------------
-	char	*inB2	 	= argv[1]; //Emis31
+	char	*inB2	 	= argv[1]; //VI
 	char	*fcF	 	= argv[2];	
 	//Loading the input files
 	//-----------------------

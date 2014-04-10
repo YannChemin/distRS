@@ -38,8 +38,8 @@ int main( int argc, char *argv[] )
 	}
 	//Loading the file infos
 	//----------------------
-	GDALDriverH hDr2 = GDALGetDatasetDriver(hD2);
-	GDALDatasetH hDOut = GDALCreateCopy(hDr2,taF,hD2,FALSE,NULL,NULL,NULL);
+	GDALDriverH hDr3 = GDALGetDatasetDriver(hD3);
+	GDALDatasetH hDOut = GDALCreateCopy(hDr3,taF,hD3,FALSE,NULL,NULL,NULL);
 	GDALRasterBandH hBOut = GDALGetRasterBand(hDOut,1);
 	GDALRasterBandH hB2 = GDALGetRasterBand(hD2,1);//Fc
 	GDALRasterBandH hB3 = GDALGetRasterBand(hD3,1);//ETa
@@ -51,10 +51,12 @@ int main( int argc, char *argv[] )
 	float *lOut = (float *) malloc(sizeof(float)*N);
 	int rowcol;
 	GDALRasterIO(hB2,GF_Read,0,0,nX,nY,l2,nX,nY,GDT_Float32,0,0);
-	GDALRasterIO(hB3,GF_Read,0,0,nX,nY,l3,nX,nY,GDT_Float32,0,0);
+	GDALRasterIO(hB3,GF_Read,0,0,nX,nY,l3,nX,nY,GDT_Int32,0,0);
 	#pragma omp parallel for default(none) \
 	private (rowcol) shared (N, l2, l3, lOut)
 	for(rowcol=0;rowcol<N;rowcol++){
+		if(l2[rowcol] < 0 || l3[rowcol] < 0) lOut[rowcol] = -28768;
+		else
 		//FC is in percentage
 		lOut[rowcol] = l2[rowcol] * l3[rowcol] / 100.0;
 	}
