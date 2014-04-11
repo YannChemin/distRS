@@ -6,14 +6,16 @@
 
 #define MAXFILES 7000
 
-//NODATA, Top and Bottom Boundary conditions
-#define NODATA -28768
 //For MODIS NDVI
 //#define TBC 10000
 //#define BBC -2000
+//NODATA, Top and Bottom Boundary conditions
+//#define NODATA -28768
 //For MODIS LST
 #define TBC 20000
-#define BBC 0
+#define BBC 5000
+//NODATA, Top and Bottom Boundary conditions
+#define NODATA 0
 
 void usage()
 {
