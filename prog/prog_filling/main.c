@@ -11,9 +11,16 @@
 //#define BBC -2000
 //NODATA, Top and Bottom Boundary conditions
 //#define NODATA -28768
+
 //For MODIS LST
-#define TBC 20000
-#define BBC 5000
+//#define TBC 20000
+//#define BBC 5000
+//NODATA, Top and Bottom Boundary conditions
+//#define NODATA 0
+
+//For MODIS ALB
+#define TBC 1000
+#define BBC 1
 //NODATA, Top and Bottom Boundary conditions
 #define NODATA 0
 
