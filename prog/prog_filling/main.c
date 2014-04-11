@@ -8,8 +8,12 @@
 
 //NODATA, Top and Bottom Boundary conditions
 #define NODATA -28768
-#define TBC 10000
-#define BBC -2000
+//For MODIS NDVI
+//#define TBC 10000
+//#define BBC -2000
+//For MODIS LST
+#define TBC 20000
+#define BBC 0
 
 void usage()
 {
