@@ -4,7 +4,7 @@
 #include<omp.h>
 #include "fillin.h"
 
-#define MAXFILES 5000
+#define MAXFILES 7000
 
 //NODATA, Top and Bottom Boundary conditions
 #define NODATA -28768
