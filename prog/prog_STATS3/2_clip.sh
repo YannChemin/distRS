@@ -5,6 +5,7 @@ imgRoot=$root/processed
 #echo "image root is $imgRoot"
 #shapefiles root
 shpRoot=$root/shp
+#echo "shp root is $shpRoot"
 
 ncores=$(grep -e cpuid /proc/cpuinfo | wc -l)
 
