@@ -64,92 +64,63 @@ int main( int argc, char *argv[] )
 	
 	waterF		= argv[6];
 	printf("inB1=%s\ninB2=%s\ninB7=%s\n",inB1, inB2, inB7);
-	//Loading the input files
-	//-----------------------
-	GDALDatasetH hDataset1;//red
-	GDALDatasetH hDataset2;//nir
-	GDALDatasetH hDataset7;//swir5
-	GDALDatasetH hDataset8;//qc250
-	GDALDatasetH hDataset9;//qc500
-
 	GDALAllRegister();
 
-	hDataset1 = GDALOpen(inB1,GA_ReadOnly);
-	hDataset2 = GDALOpen(inB2,GA_ReadOnly);
-	hDataset7 = GDALOpen(inB7,GA_ReadOnly);
-	hDataset8 = GDALOpen(in250QC,GA_ReadOnly);
-	hDataset9 = GDALOpen(in500QC,GA_ReadOnly);
+	GDALDatasetH hD1 = GDALOpen(inB1,GA_ReadOnly);//red
+	GDALDatasetH hD2 = GDALOpen(inB2,GA_ReadOnly);//nir
+	GDALDatasetH hD7 = GDALOpen(inB7,GA_ReadOnly);//swir5
+	GDALDatasetH hD8 = GDALOpen(in250QC,GA_ReadOnly);//qc250
+	GDALDatasetH hD9 = GDALOpen(in500QC,GA_ReadOnly);//qc500
 
-	if(hDataset1==NULL||hDataset2==NULL||
-	hDataset7==NULL||hDataset8==NULL||
-	hDataset9==NULL){
+	if(hD1==NULL||hD2==NULL||hD7==NULL||hD8==NULL||hD9==NULL){
 		printf("One or more input files "); 
 		printf("could not be loaded\n");
 		exit(1);
 	}
-
 	//Loading the file infos 
 	//----------------------
-	GDALDriverH hDriver1;
-	GDALDriverH hDriver2;
-	GDALDriverH hDriver7;
-	GDALDriverH hDriver8;
-	GDALDriverH hDriver9;
-
-	hDriver1 = GDALGetDatasetDriver(hDataset1);
-	hDriver2 = GDALGetDatasetDriver(hDataset2);
-	hDriver7 = GDALGetDatasetDriver(hDataset7);
-	hDriver8 = GDALGetDatasetDriver(hDataset8);
-	hDriver9 = GDALGetDatasetDriver(hDataset9);
+	GDALDriverH hDr1 = GDALGetDatasetDriver(hD1);
+	GDALDriverH hDr2 = GDALGetDatasetDriver(hD2);
+	GDALDriverH hDr7 = GDALGetDatasetDriver(hD7);
+	GDALDriverH hDr8 = GDALGetDatasetDriver(hD8);
+	GDALDriverH hDr9 = GDALGetDatasetDriver(hD9);
 
 	//Creating output file 
 	//--------------------
 	//Water Mask out
-	GDALDatasetH hDatasetOut0;
-	hDatasetOut0 = GDALCreateCopy( hDriver1, waterF,
-				hDataset1,FALSE,NULL,NULL,NULL);
-	GDALRasterBandH hBandOut0;
-	hBandOut0 = GDALGetRasterBand(hDatasetOut0,1);
+	GDALDatasetH hDOut0 = GDALCreateCopy( hDr1,waterF,hD1,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hBOut0 = GDALGetRasterBand(hDOut0,1);
 
 	//Loading the file bands 
 	//----------------------
-	GDALRasterBandH hBand1;
-	GDALRasterBandH hBand2;
-	GDALRasterBandH hBand7;
-	GDALRasterBandH hBand8;
-	GDALRasterBandH hBand9;
-
-	hBand1 = GDALGetRasterBand(hDataset1,1);
-	hBand2 = GDALGetRasterBand(hDataset2,1);
-	hBand7 = GDALGetRasterBand(hDataset7,1);
-	hBand8 = GDALGetRasterBand(hDataset8,1);
-	hBand9 = GDALGetRasterBand(hDataset9,1);
+	GDALRasterBandH hB1 = GDALGetRasterBand(hD1,1);
+	GDALRasterBandH hB2 = GDALGetRasterBand(hD2,1);
+	GDALRasterBandH hB7 = GDALGetRasterBand(hD7,1);
+	GDALRasterBandH hB8 = GDALGetRasterBand(hD8,1);
+	GDALRasterBandH hB9 = GDALGetRasterBand(hD9,1);
 	
 	printf("Passed 1\n");
 
 	//Loading the data rowxrow
 	//------------------------
-	float *pafScanline1;
-	float *pafScanline2;
-	float *pafScanline7;
-	unsigned int *pafScanline8; //250m QC
-	unsigned int *pafScanline9; // 500m QC
+	float *l1;
+	float *l2;
+	float *l7;
+	unsigned int *l8; //250m QC
+	unsigned int *l9; // 500m QC
 	
-	printf("Passed 2\n");
-	float *pafScanlineOut0;
+	float *lOut0;
 
-	int nXSize1 = GDALGetRasterBandXSize(hBand1);
-	int nYSize1 = GDALGetRasterBandYSize(hBand1);
+	int nX = GDALGetRasterBandXSize(hB1);
+	int nY = GDALGetRasterBandYSize(hB1);
 
-	printf("Passed 3\n");
-	pafScanline1 = (float *) CPLMalloc(sizeof(float)*nXSize1);
-	pafScanline2 = (float *) CPLMalloc(sizeof(float)*nXSize1);
-	pafScanline7 = (float *) CPLMalloc(sizeof(float)*nXSize1/2);
-	pafScanline8 = (unsigned int *) CPLMalloc(sizeof(unsigned int)*nXSize1);
-	pafScanline9 = (unsigned int *) CPLMalloc(sizeof(unsigned int)*nXSize1/2);
+	l1 = (float *) malloc(sizeof(float)*nX);
+	l2 = (float *) malloc(sizeof(float)*nX);
+	l7 = (float *) malloc(sizeof(float)*nX/2);
+	l8 = (unsigned int *) malloc(sizeof(unsigned int)*nX);
+	l9 = (unsigned int *) malloc(sizeof(unsigned int)*nX/2);
 	
-	printf("Passed 4\n");
-	pafScanlineOut0 = (float *) CPLMalloc(sizeof(float)*nXSize1);
+	lOut0 = (float *) malloc(sizeof(float)*nX);
 
 	int row,col;
 	
@@ -157,63 +128,49 @@ int main( int argc, char *argv[] )
 	float temp, tempval;	
 	//Accessing the data rowxrow
 	//---------------------------
-	for(row=0;row<nYSize1;row++){
-		GDALRasterIO(hBand1,GF_Read,0,row,nXSize1,1,
-			pafScanline1,nXSize1,1,GDT_Float32,0,0);
-		GDALRasterIO(hBand2,GF_Read,0,row,nXSize1,1,
-			pafScanline2,nXSize1,1,GDT_Float32,0,0);
-		GDALRasterIO(hBand7,GF_Read,0,row/2,nXSize1/2,1,
-			pafScanline7,nXSize1/2,1,GDT_Float32,0,0);
-		GDALRasterIO(hBand8,GF_Read,0,row,nXSize1,1,
-			pafScanline8,nXSize1,1,GDT_UInt32,0,0);
-		GDALRasterIO(hBand9,GF_Read,0,row/2,nXSize1/2,1,
-			pafScanline9,nXSize1/2,1,GDT_UInt32,0,0);
-//		printf("Passed row %i -- 1\n",row);
+	for(row=0;row<nY;row++){
+		GDALRasterIO(hB1,GF_Read,0,row,nX,1,l1,nX,1,GDT_Float32,0,0);
+		GDALRasterIO(hB2,GF_Read,0,row,nX,1,l2,nX,1,GDT_Float32,0,0);
+		GDALRasterIO(hB7,GF_Read,0,row/2,nX/2,1,l7,nX/2,1,GDT_Float32,0,0);
+		GDALRasterIO(hB8,GF_Read,0,row,nX,1,l8,nX,1,GDT_UInt32,0,0);
+		GDALRasterIO(hB9,GF_Read,0,row/2,nX/2,1,l9,nX/2,1,GDT_UInt32,0,0);
 		//Processing the data cellxcell
 		//-----------------------------
-		for(col=0;col<nXSize1;col++){
-			tempval = stateqa500a(pafScanline9[col/2]);
-			temp = qc250a(pafScanline8[col]);
-			if(pafScanline1[col]==-28672
-			||temp>1.0||tempval>=1.0){
+		for(col=0;col<nX;col++){
+			tempval = stateqa500a(l9[col/2]);
+			temp = qc250a(l8[col]);
+			if(l1[col]==-28672||temp>1.0||tempval>=1.0){
 				/*skip it*/
 				if(temp>1.0){
-					pafScanlineOut0[col]=10.0;
+					lOut0[col]=10.0;
 				} else if (tempval>=1.0){
-					pafScanlineOut0[col]=100.0;
+					lOut0[col]=100.0;
 				} else {
-					pafScanlineOut0[col]=-28672;
+					lOut0[col]=-28672;
 				}
 			} else {
 				//NDVI
-				ndvix = ndvi(pafScanline1[col],pafScanline2[col]);
+				ndvix = ndvi(l1[col],l2[col]);
 				//Water
 				waterx = water_modis( 
-				pafScanline7[col/2]*0.0001,ndvix);
-				pafScanlineOut0[col] = waterx; 
+				l7[col/2]*0.0001,ndvix);
+				lOut0[col] = waterx; 
 			}
 		}
 //		printf("Passed row %i -- 2\n",row);
-		GDALRasterIO(hBandOut0,GF_Write,0,row,nXSize1,1,
-			pafScanlineOut0,nXSize1,1,GDT_Float32,0,0);
+		GDALRasterIO(hBOut0,GF_Write,0,row,nX,1,lOut0,nX,1,GDT_Float32,0,0);
 	}
-	if( pafScanline1 != NULL )
-		free( pafScanline1 );
-	if( pafScanline2 != NULL )
-		free( pafScanline2 );
-	if( pafScanline7 != NULL )
-		free( pafScanline7 );
-	if( pafScanline8 != NULL )
-		free( pafScanline8 );
-	if( pafScanline9 != NULL )
-		free( pafScanline9 );
-	if( pafScanlineOut0 != NULL )
-		free( pafScanlineOut0 );
-	GDALClose(hDataset1);
-	GDALClose(hDataset2);
-	GDALClose(hDataset7);
-	GDALClose(hDataset8);
-	GDALClose(hDataset9);
-	GDALClose(hDatasetOut0);
+	if(l1!=NULL)free(l1);
+	if(l2!=NULL)free(l2);
+	if(l7!=NULL)free(l7);
+	if(l8!=NULL)free(l8);
+	if(l9!=NULL)free(l9);
+	if(lOut0!=NULL)free(lOut0);
+	GDALClose(hD1);
+	GDALClose(hD2);
+	GDALClose(hD7);
+	GDALClose(hD8);
+	GDALClose(hD9);
+	GDALClose(hDOut0);
 }
 
