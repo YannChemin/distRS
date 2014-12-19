@@ -10,6 +10,9 @@ run.sh
 root=/home/user/Dir/
 files=$(ls $root*satelliteimages*)
 ./sum outSUM $files 
+* 
+* NULLVAL is < 0
+* 
 */
 #include<stdio.h>
 #include<gdal.h>
@@ -23,6 +26,8 @@ void usage()
 	printf( "-----------------------------------------------------------\n");
 	printf( "./sum outSUM infile1[ infile2 infile3 ...] \n");
 	printf( "-----------------------------------------------------------\n");
+	printf( "NULL VAL < 0 \n");
+	printf( "-----------------------------------------------------------\n");
 	return;
 }
 
@@ -33,17 +38,17 @@ int main( int argc, char *argv[] )
 		return 1;
 	}
 	int 	i, row, col;
-        char	*in[MAXFILES];
+    char	*in[MAXFILES];
 	char	*out;
 	int 	imgs_per_year;
-	int	n_imgs;
-	int 	n_null_pix;
-	GDALDatasetH hDataset[MAXFILES+1];
+	int		n_imgs; 
+	int 	n_null_pix; /* Null Pixels counter */
+	GDALDatasetH hD[MAXFILES+1];
 	GDALAllRegister();
-	GDALDriverH hDriver[MAXFILES+1];
-	GDALRasterBandH hBand[MAXFILES+1];
-	float *pafScanline[MAXFILES+1];
-	int nXSize1, nYSize1;
+	GDALDriverH hDr[MAXFILES+1];
+	GDALRasterBandH hB[MAXFILES+1];
+	float *l[MAXFILES+1];
+	int nX, nY;
 
 	out	 	= argv[1];
 
@@ -52,52 +57,49 @@ int main( int argc, char *argv[] )
 	for (i=0;i<n_imgs;i++){
 		printf("%i / %i %s\n",i,n_imgs-1,argv[i+2]);
 		in[i]	= argv[i+2];
-		hDataset[i] = GDALOpen(in[i],GA_ReadOnly);
-		hDriver[i] = GDALGetDatasetDriver(hDataset[i]);
-		hBand[i] = GDALGetRasterBand(hDataset[i],1);
-		nXSize1 = GDALGetRasterBandXSize(hBand[0]);
-		pafScanline[i] = (float *) malloc(sizeof(float)*nXSize1);
+		hD[i] = GDALOpen(in[i],GA_ReadOnly);
+		hDr[i] = GDALGetDatasetDriver(hD[i]);
+		hB[i] = GDALGetRasterBand(hD[i],1);
+		nX = GDALGetRasterBandXSize(hB[0]);
+		l[i] = (float *) malloc(sizeof(float)*nX);
 	}
 	printf("Passed 1\n");
-	nYSize1 = GDALGetRasterBandYSize(hBand[0]);
+	nY = GDALGetRasterBandYSize(hB[0]);
 
 	//Creating output file 
-	hDataset[n_imgs] = GDALCreateCopy( hDriver[0], out,
-				hDataset[0],FALSE,NULL,NULL,NULL);
-// 	hDataset[n_imgs] = GDALCreate(hDriver[0],out,nXSize1,nYSize1,1,GDT_Float32,NULL);
-	hBand[n_imgs] = GDALGetRasterBand(hDataset[n_imgs],1);
-	pafScanline[n_imgs] = (float *) malloc(sizeof(float)*nXSize1);
+	hD[n_imgs]=GDALCreateCopy(hDr[0],out,hD[0],FALSE,NULL,NULL,NULL);
+// 	hD[n_imgs] = GDALCreate(hDr[0],out,nX,nY,1,GDT_Float32,NULL);
+	hB[n_imgs] = GDALGetRasterBand(hD[n_imgs],1);
+	l[n_imgs] = (float *) malloc(sizeof(float)*nX);
 	
 	printf("Passed 2\n");
 	//Accessing the data rowxrow
 	//---------------------------
-	for(row=0;row<nYSize1;row++){
+	for(row=0;row<nY;row++){
 		for (i=0;i<n_imgs;i++){
-			GDALRasterIO(hBand[i],GF_Read,0,row,nXSize1,1,
-			pafScanline[i],nXSize1,1,GDT_Float32,0,0);
+			GDALRasterIO(hB[i],GF_Read,0,row,nX,1,l[i],nX,1,GDT_Float32,0,0);
 		}
 // 		printf("*******\n");
 		//Processing the data cellxcell
 		//-----------------------------
-		for(col=0;col<nXSize1;col++){
+		for(col=0;col<nX;col++){
 // 			printf("Passed 3 %i %i\n",row,col);
-			pafScanline[n_imgs][col] = 0;
+			l[n_imgs][col] = 0;
 			n_null_pix = 0;
 			for (i=0;i<n_imgs;i++){
-				if(pafScanline[i][col] < 0)
+				if(l[i][col] < 0)
 					n_null_pix++;
 				else
-					pafScanline[n_imgs][col] += pafScanline[i][col];
+					l[n_imgs][col] += l[i][col];
 			}
 		}
 //		printf("Passed row %i -- 2\n",row);
-		GDALRasterIO(hBand[n_imgs],GF_Write,0,row,nXSize1,1,
-			pafScanline[n_imgs],nXSize1,1,GDT_Float32,0,0);
+		GDALRasterIO(hB[n_imgs],GF_Write,0,row,nX,1,
+			l[n_imgs],nX,1,GDT_Float32,0,0);
 	}
 	for (i=0;i<n_imgs+1;i++){
-		if( pafScanline[i] != NULL )
-			free( pafScanline[i] );
-		GDALClose(hDataset[i]);
+		if(l[i]!=NULL) free(l[i]);
+		GDALClose(hD[i]);
 	}
 }
 
