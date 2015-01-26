@@ -1,6 +1,6 @@
 #!/bin/bash
 
-doySTART=2000000
+doySTART=2000040
 doyEND=2015000
 
 #Go to Data Directory
@@ -52,7 +52,7 @@ do
 			 #count GeoTiff identified
 			 c3=$(find -type f | grep MOD09A1_ | grep sur_refl_b07 | grep A$doy | grep .tif | wc -l)
 		fi
-				if [ $(find -type f | grep MOD09A1_ | grep sur_refl_qc | grep A$doy | grep .tif | wc -l) == 1 ]
+		if [ $(find -type f | grep MOD09A1_ | grep sur_refl_qc | grep A$doy | grep .tif | wc -l) == 1 ]
 		then
 			 #Update BQA@500m file
 			 f5=$(find -type f | grep MOD09A1_ | grep sur_refl_qc | grep A$doy | grep .tif)
@@ -61,9 +61,14 @@ do
 		fi
 		if [[ $c1 == 1 && $c2 == 1 && $c3 == 1 && $c4 == 1 && $c5 == 1 ]]
 		then
+			c1=0
+			c2=0
+			c3=0
+			c4=0
+			c5=0
 			#Define number of gdalwarp running
 			npid=$(echo "$(ps aux | grep r_net | wc -l) - 1" | bc)
-			while [ $npid -ge $(echo $ncores "*4" | bc) ]
+			while [ $npid -ge $(echo $ncores "*1" | bc) ]
 			do
 				sleep 1
 				#Update number of lst running
@@ -78,5 +83,5 @@ do
 			$prog_root/wm $f1 $f2 $f3 $f4 $f5 $f6 &
 		fi
 		
-	done
+	fi
 done

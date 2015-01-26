@@ -1,15 +1,13 @@
 #!/bin/bash
 root=$(pwd)
 #images root
-imgRoot=$root/processed
+imgRoot=~/DATA
 #echo "image root is $imgRoot"
 #shapefiles root
 shpRoot=$root/shp
 #echo "shp root is $shpRoot"
 
 ncores=$(grep -e cpuid /proc/cpuinfo | wc -l)
-
-
 
 #Look for the shapefiles
 cd $shpRoot
@@ -27,7 +25,7 @@ do
 		echo $dir
 		mkdir -p $shpRoot/$dir
 		cd $imgRoot
-		for image in *.tif
+		for image in ta_*.tif
 		do
 			rm -f $shpRoot/$dir/$image
 			#echo "$imgRoot/$image"

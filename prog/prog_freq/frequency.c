@@ -87,6 +87,12 @@ int main( int argc, char *argv[] )
 				l[n_imgs][col] /= (n_imgs - n_null_pix);
 			}
 		}
+		for(col=0;col<nX;col++){
+				l[n_imgs][col] *= 32000 ;
+				/*to recover any positive pixel*/
+				//if(l[n_imgs][col]>0&&l[n_imgs][col]<1)
+				//	l[n_imgs][col]=1;
+		}
 		GDALRasterIO(hB[n_imgs],GF_Write,0,row,nX,1,l[n_imgs],nX,1,GDT_Float32,0,0);
 	}
 	for (i=0;i<n_imgs+1;i++){

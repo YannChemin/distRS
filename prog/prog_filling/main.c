@@ -10,7 +10,7 @@
 //#define TBC 10000
 //#define BBC -2000
 //NODATA, Top and Bottom Boundary conditions
-//#define NODATA -28768
+#define NODATA -28768
 
 //For MODIS LST
 //#define TBC 20000
@@ -19,10 +19,14 @@
 //#define NODATA 0
 
 //For MODIS ALB
-#define TBC 1000
-#define BBC 1
+//#define TBC 1000
+//#define BBC 1
 //NODATA, Top and Bottom Boundary conditions
-#define NODATA 0
+//#define NODATA 0
+
+//For MODIS Ta
+#define TBC 14
+#define BBC 0
 
 void usage()
 {
@@ -41,12 +45,10 @@ int main( int argc, char *argv[] )
 		usage();
 		return 1;
 	}
-	//argv[0]="./fourier"
-	//argv[last]=(null)
 	if((argc-1)%2!=0){
 		printf("argv[0]=%s\n",argv[0]);
-		printf("argc=%i\n",argc);
-		printf("argcm2=%i\n",argc%2);
+		printf("argc=%i : %s\n",argc, argv[argc]);
+		printf("argcm2=%i\n",(argc-1)%2);
 		printf("input number != output number\n");
 		exit(1);
 	}
