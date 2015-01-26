@@ -1,7 +1,11 @@
 #!/bin/bash
 
 progroot=/home/yann/dev/distRS/trunk/prog/prog_avg/
-outroot=/home/yann/TonleSapTaGap/yearly
+cd $progroot
+make clean
+make
+
+outroot=/media/yann/Data/TonleSapTaGap/yearly
 mkdir -p $outroot
 dataroot=/home/yann/TonleSapTaGap
 cd $dataroot
