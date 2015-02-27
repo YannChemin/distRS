@@ -4,7 +4,7 @@ Public domain or LGPL 2/3 or GPL 2/3 as you wish!
 Makefile
 ---------
 avg: avg.c
-	gcc -o avg avg.c -lm -I/usr/include/gdal -L/usr/lib -lgdal1.5.0
+	gcc -o avg avg.c -lm -I/usr/include/gdal -L/usr/lib -lgdal
 run.sh
 ---------
 root=/home/user/Dir/
