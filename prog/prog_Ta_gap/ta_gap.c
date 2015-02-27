@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include "gdal.h"
+#include<gdal.h>
 #include<omp.h>
 
 void usage()
@@ -9,10 +9,10 @@ void usage()
 	printf( "-----------------------------------------\n");
 	printf( "./ta_gap inETpotd inETa inFC outTa_gap\n");
 	printf( "-----------------------------------------\n");
-	printf( "inETpotd\t\tET Potential Diurnal (mm/d) \n");
+	printf( "inETpotd\tET Potential Diurnal (mm/d) \n");
 	printf( "inETa\t\tET actual (mm/d) \n");
 	printf( "inFC\t\tFraction of Vegetation Cover [0-1]\n");
-	printf( "outTa\t\t\tTranspiration Gap output (mm/d)\n");
+	printf( "outTa\t\tTranspiration Gap output (mm/d)\n");
 	return;
 }
 
