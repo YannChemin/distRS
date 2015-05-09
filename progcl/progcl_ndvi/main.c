@@ -9,26 +9,26 @@
 int main(int argc, char* argv[])
 {
         char *out        = argv[1];
-        char *inred        = argv[2];
-        char *innir        = argv[3];
-        char *inkernel        = argv[4];
+        char *inred      = argv[2];
+        char *innir      = argv[3];
+        char *inkernel   = argv[4];
         ///GDAL STUFF
         //--------------------------------------------------------
         GDALAllRegister();
         GDALDatasetH hD1        = GDALOpen(inred,GA_ReadOnly);
         GDALDatasetH hD2        = GDALOpen(innir,GA_ReadOnly);
         if(hD1==NULL||hD2==NULL)exit(EXIT_FAILURE);
-        GDALDriverH hDr                = GDALGetDatasetDriver(hD1);
-        GDALDatasetH hDOut         = GDALCreateCopy(hDr,out,hD1,FALSE,NULL,NULL,NULL);
-        GDALRasterBandH hBOut         = GDALGetRasterBand(hDOut,1);
-        GDALRasterBandH hB1         = GDALGetRasterBand(hD1,1);
-        GDALRasterBandH hB2         = GDALGetRasterBand(hD2,1);
-        int nX                        = GDALGetRasterBandXSize(hB1);
-        int nY                        = GDALGetRasterBandYSize(hB1);
-        int N                         = nX * nY;
-        float *red                 = af1d(N);
-        float *nir                 = af1d(N);
-        float *lOut                 = af1d(N);
+        GDALDriverH hDr         = GDALGetDatasetDriver(hD1);
+        GDALDatasetH hDOut = GDALCreateCopy(hDr,out,hD1,FALSE,NULL,NULL,NULL);
+        GDALRasterBandH hBOut   = GDALGetRasterBand(hDOut,1);
+        GDALRasterBandH hB1     = GDALGetRasterBand(hD1,1);
+        GDALRasterBandH hB2     = GDALGetRasterBand(hD2,1);
+        int nX                  = GDALGetRasterBandXSize(hB1);
+        int nY                  = GDALGetRasterBandYSize(hB1);
+        int N                   = nX * nY;
+        float *red              = af1d(N);
+        float *nir              = af1d(N);
+        float *lOut             = af1d(N);
         GDALRasterIO(hB1,GF_Read,0,0,nX,nY,red,nX,nY,GDT_Float32,0,0);
         GDALRasterIO(hB2,GF_Read,0,0,nX,nY,nir,nX,nY,GDT_Float32,0,0);
         GDALClose(hD1);
@@ -50,20 +50,20 @@ int main(int argc, char* argv[])
         const unsigned int cnBlocks = (int) ceil(N / cnBlockSize)+1;
         const size_t gid0 = cnBlocks * cnBlockSize;
         //Create OpenCL Platform ID and Platform Number
-        cl_platform_id p_id        = NULL;
+        cl_platform_id p_id      = NULL;
         cl_uint p_num;
-        cl_int err                = clGetPlatformIDs(1,&p_id,&p_num);
+        cl_int err               = clGetPlatformIDs(1,&p_id,&p_num);
         //Get Device ID and Info
         cl_device_id d_id        = NULL;
         cl_uint d_num;
-        err                        = clGetDeviceIDs(p_id,CL_DEVICE_TYPE_GPU,1,&d_id,&d_num);
-        cl_context hContext        = clCreateContext(NULL,1,&d_id,NULL,NULL,&err);
+        err      = clGetDeviceIDs(p_id,CL_DEVICE_TYPE_GPU,1,&d_id,&d_num);
+        cl_context hContext = clCreateContext(NULL,1,&d_id,NULL,NULL,&err);
         //Create OpenCL device and context
         //if (err == CL_SUCCESS) printf("Succeeded to create context\n");
         if(CL_DEVICE_NOT_FOUND==err){
                 printf("trying CPU instead of GPU\n");
-                err                = clGetDeviceIDs(p_id,CL_DEVICE_TYPE_CPU,1,&d_id,&d_num);
-                hContext        = clCreateContext(NULL,1,&d_id,NULL,NULL,&err);
+                err = clGetDeviceIDs(p_id,CL_DEVICE_TYPE_CPU,1,&d_id,&d_num);
+                hContext = clCreateContext(NULL,1,&d_id,NULL,NULL,&err);
          }
           if (err){
                   printf("Could not find Device to create context on\n");
