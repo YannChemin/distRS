@@ -1,6 +1,6 @@
 /* 2015 January 23
 yann Chemin (yann.chemin@gmail.com)
-Public domain or LGPL 2/3 or GPL 2/3 as you wish!
+Public domain, unlicensed 
 Makefile
 ---------
 avg: avg.c
@@ -38,10 +38,10 @@ int main( int argc, char *argv[] )
 		return 1;
 	}
 	int 	i, row, col;
-    char	*in[MAXFILES];
+	char	*in[MAXFILES];
 	char	*out;
 	int 	imgs_per_year;
-	int		n_imgs; 
+	int	n_imgs; 
 	int 	n_null_pix; /* Null Pixels counter */
 	GDALDatasetH hD[MAXFILES+1];
 	GDALAllRegister();
@@ -50,7 +50,7 @@ int main( int argc, char *argv[] )
 	float *l[MAXFILES+1];
 	int nX, nY;
 
-	out	 	= argv[1];
+	out 	= argv[1];
 
 	//Loading input files 
 	n_imgs = argc - 2;
@@ -63,16 +63,12 @@ int main( int argc, char *argv[] )
 		nX = GDALGetRasterBandXSize(hB[0]);
 		l[i] = (float *) malloc(sizeof(float)*nX);
 	}
-	printf("Passed 1\n");
 	nY = GDALGetRasterBandYSize(hB[0]);
-
 	//Creating output file 
 	hD[n_imgs]=GDALCreateCopy(hDr[0],out,hD[0],FALSE,NULL,NULL,NULL);
 // 	hD[n_imgs] = GDALCreate(hDr[0],out,nX,nY,1,GDT_Float32,NULL);
 	hB[n_imgs] = GDALGetRasterBand(hD[n_imgs],1);
 	l[n_imgs] = (float *) malloc(sizeof(float)*nX);
-	
-	printf("Passed 2\n");
 	//Accessing the data rowxrow
 	//---------------------------
 	for(row=0;row<nY;row++){
@@ -83,7 +79,6 @@ int main( int argc, char *argv[] )
 		//Processing the data cellxcell
 		//-----------------------------
 		for(col=0;col<nX;col++){
-// 			printf("Passed 3 %i %i\n",row,col);
 			l[n_imgs][col] = 0;
 			n_null_pix = 0;
 			for (i=0;i<n_imgs;i++){
@@ -102,5 +97,6 @@ int main( int argc, char *argv[] )
 		if(l[i]!=NULL) free(l[i]);
 		GDALClose(hD[i]);
 	}
+	return(EXIT_SUCCESS);
 }
 
