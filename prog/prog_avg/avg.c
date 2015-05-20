@@ -17,7 +17,7 @@ files=$(ls $root*satelliteimages*)
 #include<stdio.h>
 #include<gdal.h>
 
-#define MAXFILES 5000
+#define MAXFILES 10000
 
 void usage()
 {
@@ -65,7 +65,7 @@ int main( int argc, char *argv[] )
 	}
 	nY = GDALGetRasterBandYSize(hB[0]);
 	//Creating output file 
-	hD[n_imgs]=GDALCreateCopy(hDr[0],out,hD[0],FALSE,NULL,NULL,NULL);
+	hD[n_imgs] = GDALCreateCopy(hDr[0],out,hD[0],FALSE,NULL,NULL,NULL);
 // 	hD[n_imgs] = GDALCreate(hDr[0],out,nX,nY,1,GDT_Float32,NULL);
 	hB[n_imgs] = GDALGetRasterBand(hD[n_imgs],1);
 	l[n_imgs] = (float *) malloc(sizeof(float)*nX);
@@ -75,7 +75,6 @@ int main( int argc, char *argv[] )
 		for (i=0;i<n_imgs;i++){
 			GDALRasterIO(hB[i],GF_Read,0,row,nX,1,l[i],nX,1,GDT_Float32,0,0);
 		}
-// 		printf("*******\n");
 		//Processing the data cellxcell
 		//-----------------------------
 		for(col=0;col<nX;col++){
@@ -87,11 +86,9 @@ int main( int argc, char *argv[] )
 				else
 					l[n_imgs][col] += l[i][col];
 			}
-			l[n_imgs][col] /= (nX-n_null_pix);
+			l[n_imgs][col] /= (float) (nX-n_null_pix);
 		}
-//		printf("Passed row %i -- 2\n",row);
-		GDALRasterIO(hB[n_imgs],GF_Write,0,row,nX,1,
-			l[n_imgs],nX,1,GDT_Float32,0,0);
+		GDALRasterIO(hB[n_imgs],GF_Write,0,row,nX,1,l[n_imgs],nX,1,GDT_Float32,0,0);
 	}
 	for (i=0;i<n_imgs+1;i++){
 		if(l[i]!=NULL) free(l[i]);
