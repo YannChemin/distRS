@@ -8,9 +8,11 @@ void usage()
 	printf( "-----------------------------------------\n");
 	printf( "--Modis Processing chain--Serial code----\n");
 	printf( "-----------------------------------------\n");
-	printf( "./extract inX inY inB\n");
+	printf( "./extract inX inY inB [band_number]\n");
 	printf( "---------------------------------------------\n");
-	printf( "inX inY\t pixel coordinates (projected)\n");
+	printf( "inX inY\t\t pixel coordinates (projected)\n");
+	printf( "inB\t\t input imagery\n");
+	printf( "band_number\t input imagery band number\n");
 	return;
 }
 
@@ -34,7 +36,12 @@ int main( int argc, char **argv )
 		printf("%s could not be loaded\n", argv[3]);
 		exit(1);
 	}
-	GDALRasterBandH hB = GDALGetRasterBand(hD,1);
+	GDALRasterBandH hB;
+	if(atoi(argv[4])){
+		hB = GDALGetRasterBand(hD,atoi(argv[4]));
+	} else {
+		hB = GDALGetRasterBand(hD,1);
+	}
 	double *l= (double *) malloc(sizeof(double));
 	GDALGetGeoTransform(hD,geomx);
 // 	printf( "Origin (ULx,ULy) = (%.6f,%.6f)\n", geomx[0], geomx[3] );
