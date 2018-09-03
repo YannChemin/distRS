@@ -8,6 +8,9 @@ def rh(PW,Pa,Ta,dem):
 	Pa <- 1013.3-0.1038*dem
 	Ta <- MOD07 product
 	Ta <- -0.0065*dem+TaMOD07 (if dem>400m)
+	
+	https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/61/MOD05_L2/
+	https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/61/MOD07_L2/
 	"""
 	#Specific Humidity
 	q=0.001*(-0.0762*PW*PW+1.753*PW+12.405)
