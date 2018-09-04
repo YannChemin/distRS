@@ -19,5 +19,17 @@ def rh(PW,Pa,Ta,dem):
 	return(q*Pa/(380*exp(a)))
 
 
+def esat(tamean):
+	"""
+	esat: saturated vapour pressure
+	tamean: air temperature daily mean
+	"""
+	return(610.78*exp(17.2694*tamean/(tamean+238.3))
 
-
+def eact(esat,rh):
+	"""
+	eact: actual vapour pressure
+	esat: saturated vapour pressure
+	rh: relative humidity
+	"""
+	return(0.01*esat*rh)
