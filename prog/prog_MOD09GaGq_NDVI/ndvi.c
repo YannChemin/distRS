@@ -57,8 +57,8 @@ void usage()
 
 int main( int argc, char *argv[] )
 {
-	if( argc < 4 ) {
-		usage();
+	if( argc < 5 ) {
+		//usage();
 		return 1;
 	}
 	char	*inB1	 	= argv[1]; //B1 250m
@@ -95,16 +95,16 @@ int main( int argc, char *argv[] )
 	GDALRasterIO(hB1,GF_Read,0,0,nX,nY,l1,nX,nY,GDT_Float32,0,0);
 	GDALRasterIO(hB2,GF_Read,0,0,nX,nY,l2,nX,nY,GDT_Float32,0,0);
 	GDALRasterIO(hBQC,GF_Read,0,0,nX,nY,lQC,nX,nY,GDT_Int32,0,0);
-	GDALRasterIO(hB3,GF_Read,0,0,nX,nY,l3,nX/2,nY/2,GDT_Float32,0,0);
+	GDALRasterIO(hB3,GF_Read,0,0,nX/2,nY/2,l3,nX,nY,GDT_Float32,0,0);
 	#pragma omp parallel for default(none) \
-	private (rowcol) shared (N, l1, l2, lQC, l3, lOut)
+	private (rowcol,qa,qa1,qa2) shared (N, l1, l2, lQC, l3, lOut)
 	for(rowcol=0;rowcol<N;rowcol++){
 		qa=mod09GQa(lQC[rowcol]);
 		qa1=mod09GQc(lQC[rowcol],1);
 		qa2=mod09GQc(lQC[rowcol],2);
 		if( qa == 0 && qa1 == 0 && qa2 == 0 && l3[rowcol] > 0.18 && (l1[rowcol]+l2[rowcol]) != 0.0) 
-			lOut[rowcol] = (l2[rowcol]-l1[rowcol])/(l2[rowcol]+l1[rowcol]);
-		else lOut[rowcol] = -28768;
+			lOut[rowcol] = 1000*(l2[rowcol]-l1[rowcol])/(l2[rowcol]+l1[rowcol]);
+		else lOut[rowcol] = -28672;
 	}
 	#pragma omp barrier
 	GDALRasterIO(hBOut,GF_Write,0,0,nX,nY,lOut,nX,nY,GDT_Float32,0,0);
