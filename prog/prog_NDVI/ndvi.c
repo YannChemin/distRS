@@ -65,7 +65,7 @@ int main( int argc, char *argv[] )
 	#pragma omp parallel for default(none) \
 	private (rowcol) shared (N, l2, l3, lOut)
 	for(rowcol=0;rowcol<N;rowcol++){
-		if( l3[rowcol] == 0||l3[rowcol] == 1||l3[rowcol] == 2||l3[rowcol] == 3) lOut[rowcol] = l2[rowcol];
+		if( l3[rowcol] == 0||l3[rowcol] == 1) lOut[rowcol] = l2[rowcol];
 		else if(l2[rowcol] == -3000) lOut[rowcol] = NODATA;
 		else lOut[rowcol] = NODATA;
 	}
