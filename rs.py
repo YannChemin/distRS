@@ -34,7 +34,7 @@ def eact(esat,rh):
 	"""
 	return(0.01*esat*rh)
 
-def s2a_bbalb(b2,b3,b4,b5,b6,b7,b8,b8a,b11,b12):
+def albedoS2a(b2,b3,b4,b5,b6,b7,b8,b8a,b11,b12):
     #bandwidth
     b2w=b2*98.0
     b3w=b3*45.0
@@ -49,7 +49,7 @@ def s2a_bbalb(b2,b3,b4,b5,b6,b7,b8,b8a,b11,b12):
     wsum=b2w+b3w+b4w+b5w+b6w+b7w+b8w+b8aw+b11w+b12w
     return(wsum/809.0)
 
-def s2b_bbalb(b2,b3,b4,b5,b6,b7,b8,b8a,b11,b12):
+def albedoS2b(b2,b3,b4,b5,b6,b7,b8,b8a,b11,b12):
     #bandwidth
     b2w=b2*98.0
     b3w=b3*46.0
@@ -63,6 +63,51 @@ def s2b_bbalb(b2,b3,b4,b5,b6,b7,b8,b8a,b11,b12):
     #weighted sum
     wsum=b2w+b3w+b4w+b5w+b6w+b7w+b8w+b8aw+b11w+b12w
     return(wsum/793.0)
+
+def albedoAster(green, nir, swir2, swir3, swir5, swir6):
+    """
+    #ALBEDO: TERRA-Aster sensor
+    # Broadband albedo Aster
+    # After Liang, S.L., 2001.
+    # Narrowband to broadband conveon of land surface albedo 1 Algorithms.
+    # Remote Sensing of Environment. 2001, 76, 213-238.
+    # Input: Ref1, ref3, Ref5, Ref6, Ref8, Ref9
+    :param green:
+    :param nir:
+    :param swir2:
+    :param swir3:
+    :param swir5:
+    :param swir6:
+    :return:
+    """
+	return(0.484 * green + 0.335 * nir - 0.324 * swir2 + 0.551 * swir3 + 0.305 * swir5 - 0.367 * swir6 - 0.0015)
+
+def albedoLandsat57(blue, green, red, nir, chan5, chan7):
+    """
+    #Broadband albedo Landsat 5TM and 7ETM+, (maybe othetoo but not sure)
+	:param blue:
+    :param green:
+    :param red:
+    :param nir:
+    :param chan5:
+    :param chan7:
+    :return:
+    """
+    return(0.293 * blue + 0.274 * green + 0.233 * red + 0.156 * nir + 0.033 * chan5 + 0.011 * chan7)
+
+def albedoModis(red, nir, blue, green, swir1, swir2, swir3):
+    """
+    #Broadband albedo MODIS
+    """
+	return(0.22831 * red + 0.15982 * nir + 0.09132 * (blue + green + swir1) + 0.10959 * swir2 + 0.22831 * swir3)
+
+def albedoAvhrr(red, nir):
+    """
+    #Broadband albedo NOAA AVHRR 14 (maybe others too but not sure)
+	:param red: 
+    :param nir: 
+    :return: 
+    """return(0.035 + 0.545 * nir - 0.32 * red)
 
 def nd(x1, x2):
     return ((x1 - x2) / (x1 + x2))
@@ -211,3 +256,16 @@ def wdvi(red, nir, slslope=1):
     # WDVI: Weighted Difference Vegetation Index
     # slslope: slope of soil line
     return(nir - slslope * red)
+
+
+def ndsi(green, nir):
+    """
+    snow index
+    :param green: green band
+    :param nir: NIR band
+    :return: NDSI snow index
+    """
+    result=(green - nir)/(green + nir)
+	result[result < -1]=-1
+    result[result > 1]=1
+	return(result)
