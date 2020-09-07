@@ -106,7 +106,7 @@ def lswi(nir, swir):
 
 def water(ndvi, albedo):
     # water: generic water mapping tool
-    return ((ndvi < 0.1) & (albedo < 0.1))
+    return ((ndvi < 0.1) and (albedo < 0.1))
 
 def waterModis(ndvi, band7):
 """
