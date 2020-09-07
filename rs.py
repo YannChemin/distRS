@@ -63,3 +63,66 @@ def s2b_bbalb(b2,b3,b4,b5,b6,b7,b8,b8a,b11,b12):
     #weighted sum
     wsum=b2w+b3w+b4w+b5w+b6w+b7w+b8w+b8aw+b11w+b12w
     return(wsum/793.0)
+
+def nd(x1, x2):
+    return ((x1 - x2) / (x1 + x2))
+
+def nddi(ndvi, ndwi):
+    # NDDI: Normalized Difference Drought Index {
+    result=nd(ndvi, ndwi)
+    result[result < 0]=0
+    result[result > 2]=2
+    return (result)
+
+def drought(ndvi, ndwi):
+    # DROUGHT where drought = 1, no drought=0
+    res=((ndvi < 0.5 and ndwi < 0.3) * 2) + ((ndvi > 0.6 and ndwi > 0.4) * 1) - 1
+    return (!res)
+
+def ndwi(green, nir):
+    # NDWI: Normalized Difference Water Index
+    # Stuart McFeeters. 1996. The Use of Normalized Difference Water Index in the Delination of
+    # Open Water Features. International Journal of Remote Sensing 27(14):3025-3033
+    result=nd(green, nir)
+    result[result < -1]=-1
+    result[result > 1]=1
+    return (result)
+
+def mndwi(green, swir):
+    # MNDWI: Modified Normalized Difference Water Index
+    # Hanqui XU. 2006. Modification of Normalized Difference Water Index to Enhance Open Water
+    #	Features om Remotely Sensed Imagery. International Journal of Remote Sensing 17(7):1425-1432
+    result=nd(green, swir)
+    result[result < -1]=-1
+    result[result > 1]=1
+    return (result)
+
+def lswi(nir, swir):
+    # LSWI: Land Surface Water Index
+    result=nd(nir, swir)
+    result[result < -1]=-1
+    result[result > 1]=1
+    return (result)
+
+def water(ndvi, albedo):
+    # water: generic water mapping tool
+    return ((ndvi < 0.1) & (albedo < 0.1))
+
+def waterModis(ndvi, band7):
+"""
+# water.modis: Terra-MODIS water mapping tool
+# Xiao X., Boles S., Liu J., Zhuang D., Frokling S., Li C., Salas W., Moore III B. (2005).
+# Mapping paddy rice agriculture in southern China using multi-temporal MODIS images.
+# Remote Sensing of Environment 95:480-492.
+#
+# Roy D.P., Jin Y., Lewis P.E., Justice C.O. (2005).
+# Prototyping a global algorithm for systematic fire-affected
+# area mapping using MODIS time series data.
+# Remote Sensing of Environment 97:137-162.
+"""
+if((ndvi < 0.1) and (band7 < 0.04)):
+    return(1)
+else:
+    return(0)
+
+}
