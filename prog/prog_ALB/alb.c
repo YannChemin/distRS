@@ -54,7 +54,10 @@ int main( int argc, char *argv[] )
 	float	*l2 = (float *) malloc(sizeof(float)*N);
 	float	*l3 = (float *) malloc(sizeof(float)*N);
 
-	GDALDatasetH hDOut = GDALCreateCopy(hDr1,out,hD1,FALSE,NULL,NULL,NULL);
+	char **options = NULL;
+	options = CSLSetNameValue( options, "TILED", "YES" );
+	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
+	GDALDatasetH hDOut = GDALCreateCopy(hDr1,out,hD1,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut = GDALGetRasterBand(hDOut,1);
 	float	*lOut = (float *) malloc(sizeof(float)*N);
 

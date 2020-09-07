@@ -98,15 +98,18 @@ int main( int argc, char *argv[] )
 
 	//Creating output file
 	//--------------------
+	char **options = NULL;
+	options = CSLSetNameValue( options, "TILED", "YES" );
+	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
 	//Evapfr out
 	GDALDatasetH hDOut0;
-	hDOut0 = GDALCreateCopy( hDr2, sebs_evapfrF,hD2,FALSE,NULL,NULL,NULL);
+	hDOut0 = GDALCreateCopy( hDr2, sebs_evapfrF,hD2,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut0;
 	hBOut0 = GDALGetRasterBand(hDOut0,1);
 
 	//ETa out
 	GDALDatasetH hDOut;
-	hDOut = GDALCreateCopy( hDr2, sebs_etaF,hD2,FALSE,NULL,NULL,NULL);
+	hDOut = GDALCreateCopy( hDr2, sebs_etaF,hD2,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut;
 	hBOut = GDALGetRasterBand(hDOut,1);
 

@@ -17,7 +17,10 @@ int main(int argc, char* argv[])
 	GDALDatasetH hD1	= GDALOpen(inlst,GA_ReadOnly);
 	if(hD1==NULL)exit(EXIT_FAILURE);
 	GDALDriverH hDr		= GDALGetDatasetDriver(hD1);
-	GDALDatasetH hDOut 	= GDALCreateCopy(hDr,out,hD1,FALSE,NULL,NULL,NULL);
+	char **options = NULL;
+	options = CSLSetNameValue( options, "TILED", "YES" );
+	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
+	GDALDatasetH hDOut 	= GDALCreateCopy(hDr,out,hD1,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut 	= GDALGetRasterBand(hDOut,1);
 	GDALRasterBandH hB1 	= GDALGetRasterBand(hD1,1);
 	int nX			= GDALGetRasterBandXSize(hB1);

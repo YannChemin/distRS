@@ -51,7 +51,10 @@ int main( int argc, char *argv[] )
 	}
 	//LOAD 250 m bands and create output
 	GDALDriverH hDr3 = GDALGetDatasetDriver(hD3);
-	GDALDatasetH hDOut = GDALCreateCopy(hDr3,bpF,hD3,FALSE,NULL,NULL,NULL);
+	char **options = NULL;
+	options = CSLSetNameValue( options, "TILED", "YES" );
+	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
+	GDALDatasetH hDOut = GDALCreateCopy(hDr3,bpF,hD3,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut = GDALGetRasterBand(hDOut,1);
 	GDALRasterBandH hB3 = GDALGetRasterBand(hD3,1);//NDVI 250m
 	GDALRasterBandH hB4 = GDALGetRasterBand(hD4,1);//ET 500m

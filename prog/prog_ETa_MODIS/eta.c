@@ -55,8 +55,8 @@ int main( int argc, char *argv[] )
 	}
 	GDALDriverH hDr2 = GDALGetDatasetDriver(hD2);
 	char **options = NULL;
-	//options = CSLSetNameValue( options, "TILED", "YES" );
-	//options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
+	options = CSLSetNameValue( options, "TILED", "YES" );
+	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
 	GDALDatasetH hDOut = GDALCreateCopy(hDr2,etaF,hD2,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut = GDALGetRasterBand(hDOut,1);
 	GDALSetRasterNoDataValue(hBOut, NODATA);

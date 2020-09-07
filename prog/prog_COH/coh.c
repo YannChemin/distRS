@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<math.h>
 
-//#data1 and data2 are double pointer arrrays (w*h) linearized for parallelization
+//#data1 and data2 are double pointer arrays (w*h) linearized for parallelization
 //#Windowed kernel (2x2,3x3,4x4) not more
 float coherenceWindowed(int len, float * data1, float * data2){
 	double sum1 = 0;

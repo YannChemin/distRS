@@ -77,9 +77,11 @@ int main( int argc, char *argv[] )
 	}
 	//Loading the file infos
 	GDALDriverH hDr3 = GDALGetDatasetDriver(hD3);
-
+	char **options = NULL;
+	options = CSLSetNameValue( options, "TILED", "YES" );
+	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
 	//Creating output file
-	GDALDatasetH hDOut = GDALCreateCopy(hDr3,outF,hD3,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut = GDALCreateCopy(hDr3,outF,hD3,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut = GDALGetRasterBand(hDOut,1);
 
 	//Loading the file bands

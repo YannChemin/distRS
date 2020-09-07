@@ -48,7 +48,7 @@ int main( int argc, char *argv[] )
 	char **options = NULL;
 	options = CSLSetNameValue( options, "TILED", "YES" );
 	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
-	GDALDatasetH hDOut = GDALCreateCopy(hDr2,ndviF,hD2,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut = GDALCreateCopy(hDr2,ndviF,hD2,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut = GDALGetRasterBand(hDOut,1);
 	GDALSetRasterNoDataValue(hBOut, NODATA);
 	GDALRasterBandH hB2 = GDALGetRasterBand(hD2,1);//NDVI

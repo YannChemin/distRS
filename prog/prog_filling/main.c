@@ -71,10 +71,13 @@ int main( int argc, char *argv[] )
 		hB[i] = GDALGetRasterBand(hD[i],1);
 	}
 	GDALDriverH hDr = GDALGetDatasetDriver(hD[0]);
+	char **options = NULL;
+	options = CSLSetNameValue( options, "TILED", "YES" );
+	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
 	for(i=length+1;i<argc;i++){
 		j=i-length-1;
 		out=argv[i];
-		hDOut[j] = GDALCreateCopy(hDr,out,hD[0],FALSE,NULL,NULL,NULL);
+		hDOut[j] = GDALCreateCopy(hDr,out,hD[0],FALSE,options,NULL,NULL);
 		hBOut[j] = GDALGetRasterBand(hDOut[j],1);
 	}
 	int nX = GDALGetRasterBandXSize(hB[1]);

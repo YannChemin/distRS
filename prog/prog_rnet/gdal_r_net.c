@@ -64,7 +64,10 @@ int main( int argc, char *argv[] )
 	}
 
 	GDALDriverH hDr6 = GDALGetDatasetDriver(hD6);
-	GDALDatasetH hDOut = GDALCreateCopy(hDr6,rnetF,hD6,FALSE,NULL,NULL,NULL);
+	char **options = NULL;
+	options = CSLSetNameValue( options, "TILED", "YES" );
+	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
+	GDALDatasetH hDOut = GDALCreateCopy(hDr6,rnetF,hD6,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut = GDALGetRasterBand(hDOut,1);
 
 	GDALRasterBandH hB1 = GDALGetRasterBand(hD1,1);//Albedo

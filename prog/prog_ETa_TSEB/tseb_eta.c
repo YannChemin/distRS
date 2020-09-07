@@ -79,30 +79,33 @@ int main(int argc,char *argv[])
 	//Loading the file infos
 	//----------------------
 	GDALDriverH hDr8 = GDALGetDatasetDriver(hD8);
+	char **options = NULL;
+	options = CSLSetNameValue( options, "TILED", "YES" );
+	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
 	//Creating output files
-	GDALDatasetH hDOut0 = GDALCreateCopy( hDr8, evap_frF,hD8,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut0 = GDALCreateCopy( hDr8, evap_frF,hD8,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut0 = GDALGetRasterBand(hDOut0,1);
-	GDALDatasetH hDOut1 = GDALCreateCopy( hDr8, etaF,hD8,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut1 = GDALCreateCopy( hDr8, etaF,hD8,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut1 = GDALGetRasterBand(hDOut1,1);
-	GDALDatasetH hDOut2 = GDALCreateCopy( hDr8, h_soilF,hD8,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut2 = GDALCreateCopy( hDr8, h_soilF,hD8,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut2 = GDALGetRasterBand(hDOut2,1);
-	GDALDatasetH hDOut3 = GDALCreateCopy( hDr8, h_canopyF,hD8,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut3 = GDALCreateCopy( hDr8, h_canopyF,hD8,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut3 = GDALGetRasterBand(hDOut3,1);
-	GDALDatasetH hDOut4 = GDALCreateCopy( hDr8, le_soilF,hD8,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut4 = GDALCreateCopy( hDr8, le_soilF,hD8,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut4 = GDALGetRasterBand(hDOut4,1);
-	GDALDatasetH hDOut5 = GDALCreateCopy( hDr8, le_canopyF,hD8,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut5 = GDALCreateCopy( hDr8, le_canopyF,hD8,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut5 = GDALGetRasterBand(hDOut5,1);
-	GDALDatasetH hDOut6 = GDALCreateCopy( hDr8, g0F,hD8,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut6 = GDALCreateCopy( hDr8, g0F,hD8,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut6 = GDALGetRasterBand(hDOut6,1);
-	GDALDatasetH hDOut7 = GDALCreateCopy( hDr8, RnF,hD8,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut7 = GDALCreateCopy( hDr8, RnF,hD8,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut7 = GDALGetRasterBand(hDOut7,1);
-	GDALDatasetH hDOut8 = GDALCreateCopy( hDr8, laiF,hD8,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut8 = GDALCreateCopy( hDr8, laiF,hD8,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut8 = GDALGetRasterBand(hDOut8,1);
-	GDALDatasetH hDOut9 = GDALCreateCopy( hDr8, resist_airF,hD8,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut9 = GDALCreateCopy( hDr8, resist_airF,hD8,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut9 = GDALGetRasterBand(hDOut9,1);
-	GDALDatasetH hDOut10 = GDALCreateCopy( hDr8, resist_soilF,hD8,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut10 = GDALCreateCopy( hDr8, resist_soilF,hD8,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut10 = GDALGetRasterBand(hDOut10,1);
-	GDALDatasetH hDOut11 = GDALCreateCopy( hDr8, L_mostF,hD8,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut11 = GDALCreateCopy( hDr8, L_mostF,hD8,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut11 = GDALGetRasterBand(hDOut11,1);
 	//Loading the file bands
 	GDALRasterBandH hB1 = GDALGetRasterBand(hD1,1);

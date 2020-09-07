@@ -58,9 +58,11 @@ int main()
 
 	//Loading the file infos 
 	GDALDriverH hDr1 = GDALGetDatasetDriver(hD1);
-
+	char **options = NULL;
+	options = CSLSetNameValue( options, "TILED", "YES" );
+	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
 	//Creating output file 
-	GDALDatasetH hDOut = GDALCreateCopy( hDr1, "water.tif",hD1,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut = GDALCreateCopy( hDr1, "water.tif",hD1,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut = GDALGetRasterBand(hDOut,1);
 	
 	//Loading the file bands 

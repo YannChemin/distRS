@@ -11,7 +11,7 @@ void usage()
 	printf( "-----------------------------------------\n");
 	printf( "inEmis31\t\tModis MOD11A2 Emis 31 1Km\n");
 	printf( "inEmis32\t\tModis MOD11A2 Emis 32 1Km\n");
-	printf( "outFC\t\t\tFC output [-x100]\n");
+	printf( "outFC\t\t\tFraction emissivity Cover output [-x100]\n");
 	return;
 }
 
@@ -39,7 +39,10 @@ int main( int argc, char *argv[] )
 	//Loading the file infos
 	//----------------------
 	GDALDriverH hDr2 = GDALGetDatasetDriver(hD2);
-	GDALDatasetH hDOut = GDALCreateCopy(hDr2,fcF,hD2,FALSE,NULL,NULL,NULL);
+	char **options = NULL;
+	options = CSLSetNameValue( options, "TILED", "YES" );
+	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
+	GDALDatasetH hDOut = GDALCreateCopy(hDr2,fcF,hD2,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut = GDALGetRasterBand(hDOut,1);
 	GDALRasterBandH hB2 = GDALGetRasterBand(hD2,1);//Emis31
 	GDALRasterBandH hB3 = GDALGetRasterBand(hD3,1);//Emis32

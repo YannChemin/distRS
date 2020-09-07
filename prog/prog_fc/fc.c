@@ -10,7 +10,7 @@ void usage()
 	printf( "./fc inVI outFC\n");
 	printf( "-----------------------------------------\n");
 	printf( "inVI\t\tModis Veg Index of your choice\n");
-	printf( "outFC\t\t\tFC output [-x100]\n");
+	printf( "outFC\t\t\tFraction Veg Cover output [-x100]\n");
 	return;
 }
 
@@ -36,7 +36,10 @@ int main( int argc, char *argv[] )
 	//Loading the file infos
 	//----------------------
 	GDALDriverH hDr2 = GDALGetDatasetDriver(hD2);
-	GDALDatasetH hDOut = GDALCreateCopy(hDr2,fcF,hD2,FALSE,NULL,NULL,NULL);
+	char **options = NULL;
+	options = CSLSetNameValue( options, "TILED", "YES" );
+	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
+	GDALDatasetH hDOut = GDALCreateCopy(hDr2,fcF,hD2,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut = GDALGetRasterBand(hDOut,1);
 	GDALRasterBandH hB2 = GDALGetRasterBand(hD2,1);//VI
 	int nX = GDALGetRasterBandXSize(hB2);

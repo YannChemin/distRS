@@ -87,8 +87,11 @@ int main( int argc, char *argv[] )
 
 	//Creating output file 
 	//--------------------
+	char **options = NULL;
+	options = CSLSetNameValue( options, "TILED", "YES" );
+	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
 	//Water Mask out
-	GDALDatasetH hDOut0 = GDALCreateCopy( hDr1,waterF,hD1,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut0 = GDALCreateCopy( hDr1,waterF,hD1,FALSE,options,NULL,NULL);
 	GDALDatasetH hBOut0 = GDALGetRasterBand(hDOut0,1);
 
 	//Loading the file bands 

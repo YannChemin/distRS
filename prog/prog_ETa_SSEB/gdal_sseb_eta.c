@@ -37,14 +37,17 @@ int main( int argc, char *argv[] )
 		exit(1);
 	}
 	GDALDriverH hDr2 = GDALGetDatasetDriver(hD2);
+	char **options = NULL;
+	options = CSLSetNameValue( options, "TILED", "YES" );
+	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
 	//theta out
-	GDALDatasetH hDOut1 = GDALCreateCopy( hDr2, sseb_thetaF,hD2,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut1 = GDALCreateCopy( hDr2, sseb_thetaF,hD2,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut1 = GDALGetRasterBand(hDOut1,1);
 	//Evapfr out
-	GDALDatasetH hDOut0 = GDALCreateCopy( hDr2, sseb_evapfrF,hD2,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut0 = GDALCreateCopy( hDr2, sseb_evapfrF,hD2,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut0 = GDALGetRasterBand(hDOut0,1);
 	//ETa out
-	GDALDatasetH hDOut = GDALCreateCopy( hDr2, sseb_etaF,hD2,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut = GDALCreateCopy( hDr2, sseb_etaF,hD2,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut = GDALGetRasterBand(hDOut,1);
 	GDALRasterBandH hB1 = GDALGetRasterBand(hD1,1);//LST
 	GDALRasterBandH hB2 = GDALGetRasterBand(hD2,1);//ET0PM

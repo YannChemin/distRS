@@ -40,8 +40,11 @@ int main( int argc, char *argv[] )
 		printf("could not be loaded\n");
 		exit(1);
 	}
+	char **options = NULL;
+	options = CSLSetNameValue( options, "TILED", "YES" );
+	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
 	GDALDriverH hDr2 = GDALGetDatasetDriver(hD2);
-	GDALDatasetH hDOut = GDALCreateCopy( hDr2, pm_etoF,hD2,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut = GDALCreateCopy( hDr2, pm_etoF,hD2,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut = GDALGetRasterBand(hDOut,1);
 	GDALRasterBandH hB1 = GDALGetRasterBand(hD1,1);//LST
 	GDALRasterBandH hB2 = GDALGetRasterBand(hD2,1);//DEM

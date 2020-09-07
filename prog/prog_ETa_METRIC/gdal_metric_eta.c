@@ -114,21 +114,24 @@ int main( int argc, char *argv[] )
 		printf("could not be loaded\n");
 		exit(1);
 	}
+	char **options = NULL;
+	options = CSLSetNameValue( options, "TILED", "YES" );
+	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
 	GDALDriverH hDr5 = GDALGetDatasetDriver(hD5);
 	//Evapfr out
-	GDALDatasetH hDOut0 = GDALCreateCopy( hDr5, metric_evapfrF,hD5,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut0 = GDALCreateCopy( hDr5, metric_evapfrF,hD5,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut0 = GDALGetRasterBand(hDOut0,1);
 	//ETa out
-	GDALDatasetH hDOut = GDALCreateCopy( hDr5, metric_etaF,hD5,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut = GDALCreateCopy( hDr5, metric_etaF,hD5,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut = GDALGetRasterBand(hDOut,1);
 	//dTair out
-	GDALDatasetH hDOut1 = GDALCreateCopy( hDr5, metric_dtairF,hD5,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut1 = GDALCreateCopy( hDr5, metric_dtairF,hD5,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut1 = GDALGetRasterBand(hDOut1,1);
 	//theta out
-	GDALDatasetH hDOut2 = GDALCreateCopy( hDr5, metric_thetaF,hD5,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut2 = GDALCreateCopy( hDr5, metric_thetaF,hD5,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut2 = GDALGetRasterBand(hDOut2,1);
 // 	//latitude temporary skeleton
-	GDALDatasetH hDLat = GDALCreateCopy( hDr5, "latitude",hD5,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDLat = GDALCreateCopy( hDr5, "latitude",hD5,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBLat = GDALGetRasterBand(hDLat,1);
 
 	GDALRasterBandH hB1 = GDALGetRasterBand(hD1,1);//NDVI

@@ -86,21 +86,23 @@ int main( int argc, char *argv[] )
 	//Loading the file infos
 	//----------------------
 	GDALDriverH hDr14 = GDALGetDatasetDriver(hD14);
-
+	char **options = NULL;
+	options = CSLSetNameValue( options, "TILED", "YES" );
+	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
 	//Creating output file
 	//--------------------
 	//Evaporative fraction
-	GDALDatasetH hDOut4 = GDALCreateCopy( hDr14, evapfrF,hD14,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut4 = GDALCreateCopy( hDr14, evapfrF,hD14,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut4 = GDALGetRasterBand(hDOut4,1);
 	//ETa
-	GDALDatasetH hDOut5 = GDALCreateCopy( hDr14, etaF,hD14,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut5 = GDALCreateCopy( hDr14, etaF,hD14,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut5 = GDALGetRasterBand(hDOut5,1);
 
 	//DTair
-	GDALDatasetH hDOut6 = GDALCreateCopy( hDr14, dtairF,hD14,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut6 = GDALCreateCopy( hDr14, dtairF,hD14,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut6 = GDALGetRasterBand(hDOut6,1);
 	//Theta
-	GDALDatasetH hDOut7 = GDALCreateCopy( hDr14, thetaF,hD14,FALSE,NULL,NULL,NULL);
+	GDALDatasetH hDOut7 = GDALCreateCopy( hDr14, thetaF,hD14,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut7 = GDALGetRasterBand(hDOut7,1);
 
 	//Loading the file bands

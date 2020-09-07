@@ -65,9 +65,11 @@ int main( int argc, char *argv[] )
 	}
 	printf("Passed 1\n");
 	nY = GDALGetRasterBandYSize(hB[0]);
-
+	char **options = NULL;
+	options = CSLSetNameValue( options, "TILED", "YES" );
+	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
 	//Creating output file 
-	hD[n_imgs]=GDALCreateCopy(hDr[0],out,hD[0],FALSE,NULL,NULL,NULL);
+	hD[n_imgs]=GDALCreateCopy(hDr[0],out,hD[0],FALSE,options,NULL,NULL);
 // 	hD[n_imgs] = GDALCreate(hDr[0],out,nX,nY,1,GDT_Float32,NULL);
 	hB[n_imgs] = GDALGetRasterBand(hD[n_imgs],1);
 	l[n_imgs] = (float *) malloc(sizeof(float)*nX);
