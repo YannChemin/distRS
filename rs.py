@@ -33,3 +33,33 @@ def eact(esat,rh):
 	rh: relative humidity
 	"""
 	return(0.01*esat*rh)
+
+def s2a_bbalb(b2,b3,b4,b5,b6,b7,b8,b8a,b11,b12):
+    #bandwidth
+    b2w=b2*98.0
+    b3w=b3*45.0
+    b4w=b4*38.0
+    b5w=b5*19.0
+    b6w=b6*18.0
+    b7w=b7*28.0
+    b8aw=b8a*33.0
+    b11w=b11*143.0
+    b12w=b12*242.0
+    #weighted sum
+    wsum=b2w+b3w+b4w+b5w+b6w+b7w+b8w+b8aw+b11w+b12w
+    return(wsum/809.0)
+
+def s2b_bbalb(b2,b3,b4,b5,b6,b7,b8,b8a,b11,b12):
+    #bandwidth
+    b2w=b2*98.0
+    b3w=b3*46.0
+    b4w=b4*39.0
+    b5w=b5*20.0
+    b6w=b6*18.0
+    b7w=b7*28.0
+    b8aw=b8a*32.0
+    b11w=b11*141.0
+    b12w=b12*238.0
+    #weighted sum
+    wsum=b2w+b3w+b4w+b5w+b6w+b7w+b8w+b8aw+b11w+b12w
+    return(wsum/793.0)
