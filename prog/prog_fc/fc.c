@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include "gdal.h"
 #include<omp.h>
+#include "cpl_string.h"
 
 void usage()
 {
@@ -39,6 +40,7 @@ int main( int argc, char *argv[] )
 	char **options = NULL;
 	options = CSLSetNameValue( options, "TILED", "YES" );
 	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
+	options = CSLSetNameValue( options, "PREDICTOR", "2" );
 	GDALDatasetH hDOut = GDALCreateCopy(hDr2,fcF,hD2,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut = GDALGetRasterBand(hDOut,1);
 	GDALRasterBandH hB2 = GDALGetRasterBand(hD2,1);//VI
@@ -49,7 +51,8 @@ int main( int argc, char *argv[] )
 	float *lOut = (float *) malloc(sizeof(float)*N);
 	int rowcol;
 	float tempval, minval=100, maxval=0;
-	GDALRasterIO(hB2,GF_Read,0,0,nX,nY,l2,nX,nY,GDT_Float32,0,0);
+	int err=0; 
+	err=GDALRasterIO(hB2,GF_Read,0,0,nX,nY,l2,nX,nY,GDT_Float32,0,0);
 	#pragma omp parallel for default(none) \
 	private (rowcol, tempval) shared (N, minval, maxval, l2)
 	for(rowcol=0;rowcol<N;rowcol++){
@@ -78,7 +81,7 @@ int main( int argc, char *argv[] )
 		}
 	}
 	#pragma omp barrier
-	GDALRasterIO(hBOut,GF_Write,0,0,nX,nY,lOut,nX,nY,GDT_Float32,0,0);
+	err=GDALRasterIO(hBOut,GF_Write,0,0,nX,nY,lOut,nX,nY,GDT_Float32,0,0);
 	if( l2 != NULL ) free( l2 );
 	GDALClose(hD2);
 	GDALClose(hDOut);

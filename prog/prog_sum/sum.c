@@ -68,7 +68,8 @@ int main( int argc, char *argv[] )
 	char **options = NULL;
 	options = CSLSetNameValue( options, "TILED", "YES" );
 	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
-	//Creating output file 
+	options = CSLSetNameValue( options, "PREDICTOR", "2" );
+	//Creating output file
 	hD[n_imgs]=GDALCreateCopy(hDr[0],out,hD[0],FALSE,options,NULL,NULL);
 // 	hD[n_imgs] = GDALCreate(hDr[0],out,nX,nY,1,GDT_Float32,NULL);
 	hB[n_imgs] = GDALGetRasterBand(hD[n_imgs],1);

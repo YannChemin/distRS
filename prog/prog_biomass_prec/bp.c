@@ -54,6 +54,7 @@ int main( int argc, char *argv[] )
 	char **options = NULL;
 	options = CSLSetNameValue( options, "TILED", "YES" );
 	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
+	options = CSLSetNameValue( options, "PREDICTOR", "2" );
 	GDALDatasetH hDOut = GDALCreateCopy(hDr3,bpF,hD3,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut = GDALGetRasterBand(hDOut,1);
 	GDALRasterBandH hB3 = GDALGetRasterBand(hD3,1);//NDVI 250m

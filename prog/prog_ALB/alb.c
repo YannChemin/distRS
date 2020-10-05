@@ -57,6 +57,7 @@ int main( int argc, char *argv[] )
 	char **options = NULL;
 	options = CSLSetNameValue( options, "TILED", "YES" );
 	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
+	options = CSLSetNameValue( options, "PREDICTOR", "2" );
 	GDALDatasetH hDOut = GDALCreateCopy(hDr1,out,hD1,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut = GDALGetRasterBand(hDOut,1);
 	float	*lOut = (float *) malloc(sizeof(float)*N);

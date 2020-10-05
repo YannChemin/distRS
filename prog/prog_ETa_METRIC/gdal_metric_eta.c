@@ -117,6 +117,7 @@ int main( int argc, char *argv[] )
 	char **options = NULL;
 	options = CSLSetNameValue( options, "TILED", "YES" );
 	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
+	options = CSLSetNameValue( options, "PREDICTOR", "2" );
 	GDALDriverH hDr5 = GDALGetDatasetDriver(hD5);
 	//Evapfr out
 	GDALDatasetH hDOut0 = GDALCreateCopy( hDr5, metric_evapfrF,hD5,FALSE,options,NULL,NULL);

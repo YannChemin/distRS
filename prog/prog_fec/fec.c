@@ -42,6 +42,7 @@ int main( int argc, char *argv[] )
 	char **options = NULL;
 	options = CSLSetNameValue( options, "TILED", "YES" );
 	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
+	options = CSLSetNameValue( options, "PREDICTOR", "2" );
 	GDALDatasetH hDOut = GDALCreateCopy(hDr2,fcF,hD2,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut = GDALGetRasterBand(hDOut,1);
 	GDALRasterBandH hB2 = GDALGetRasterBand(hD2,1);//Emis31

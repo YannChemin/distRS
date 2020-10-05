@@ -106,6 +106,7 @@ int main( int argc, char *argv[] )
 	char **options = NULL;
 	options = CSLSetNameValue( options, "TILED", "YES" );
 	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
+	options = CSLSetNameValue( options, "PREDICTOR", "2" );
 	GDALDatasetH hDOutVI = GDALCreateCopy(hDr4,L8viF,hD4,FALSE,options,NULL,NULL);
 	GDALDatasetH hDOutWI = GDALCreateCopy(hDr4,L8wiF,hD4,FALSE,options,NULL,NULL);
 	GDALDatasetH hDOutLSWI = GDALCreateCopy(hDr4,L8lswiF,hD4,FALSE,options,NULL,NULL);

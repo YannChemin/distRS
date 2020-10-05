@@ -80,6 +80,7 @@ int main( int argc, char *argv[] )
 	char **options = NULL;
 	options = CSLSetNameValue( options, "TILED", "YES" );
 	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
+	options = CSLSetNameValue( options, "PREDICTOR", "2" );
 	//Creating output file
 	GDALDatasetH hDOut = GDALCreateCopy(hDr3,outF,hD3,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut = GDALGetRasterBand(hDOut,1);

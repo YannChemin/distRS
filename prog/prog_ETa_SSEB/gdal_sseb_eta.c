@@ -40,6 +40,7 @@ int main( int argc, char *argv[] )
 	char **options = NULL;
 	options = CSLSetNameValue( options, "TILED", "YES" );
 	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
+	options = CSLSetNameValue( options, "PREDICTOR", "2" );
 	//theta out
 	GDALDatasetH hDOut1 = GDALCreateCopy( hDr2, sseb_thetaF,hD2,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut1 = GDALGetRasterBand(hDOut1,1);
