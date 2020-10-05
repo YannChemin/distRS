@@ -56,7 +56,8 @@ int main()
 	char **options = NULL;
 	options = CSLSetNameValue( options, "TILED", "YES" );
 	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
-	//Creating output file 
+	options = CSLSetNameValue( options, "PREDICTOR", "2" );
+	//Creating output file
 	GDALDatasetH hDOut = GDALCreateCopy( hDr1, "ndvi.tif",hD1,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut = GDALGetRasterBand(hDOut,1);
 	

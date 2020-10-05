@@ -20,6 +20,7 @@ int main(int argc, char* argv[])
 	char **options = NULL;
 	options = CSLSetNameValue( options, "TILED", "YES" );
 	options = CSLSetNameValue( options, "COMPRESS", "DEFLATE" );
+	options = CSLSetNameValue( options, "PREDICTOR", "2" );
 	GDALDatasetH hDOut 	= GDALCreateCopy(hDr,out,hD1,FALSE,options,NULL,NULL);
 	GDALRasterBandH hBOut 	= GDALGetRasterBand(hDOut,1);
 	GDALRasterBandH hB1 	= GDALGetRasterBand(hD1,1);
