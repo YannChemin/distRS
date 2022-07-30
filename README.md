@@ -4,7 +4,7 @@ A distributed computing framework for MODIS satellite imagery high-level product
 
 ![architecture](architecture.png "distRS architecture")
 
-# Description[^1]
+## Description[^1]
 
 With the various types of actual ET models being developed in the last 20 years, it becomes
 necessary to inter-compare methods. Most of already published ETa models comparisons
